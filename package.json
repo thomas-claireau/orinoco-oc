@@ -1,0 +1,22 @@
+{
+  "name": "orinoco-oc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass sass/style.scss sass/style.css --watch",
+    "serve": "cd backend && nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomas-claireau/orinoco-oc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomas-claireau/orinoco-oc/issues"
+  },
+  "homepage": "https://github.com/thomas-claireau/orinoco-oc#readme"
+}
