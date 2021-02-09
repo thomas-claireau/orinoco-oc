@@ -1,1 +1,40 @@
-@import "./components/orinoco-header";
+@import "./vars.scss";
+@import 'layout/header';
+@import 'layout/hero';
+@import 'layout/footer';
+@import 'layout/products-list';
+
+
+html {
+  font-size: 10px;
+
+  @media screen and (max-width: $break-large) {
+    font-size: 9px;
+  }
+
+  @media screen and (max-width: $break-medium) {
+    font-size: 8px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: $mainFont;
+}
+
+.page-body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 130rem;
+  margin: auto;
+  padding: 0 2rem;
+}
