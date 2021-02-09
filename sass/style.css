@@ -86,12 +86,30 @@ footer > .container {
   font-size: 1.8rem;
 }
 
+.products-list {
+  padding: 8rem 0;
+}
 .products-list .product {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   text-decoration: none;
   color: #000000;
+}
+.products-list .product:not(:first-child) {
+  margin-top: 5rem;
+}
+.products-list .product.left {
+  flex-direction: row;
+}
+.products-list .product.left > .infos > div {
+  margin-left: 4rem;
+}
+.products-list .product.right {
+  flex-direction: row-reverse;
+}
+.products-list .product.right > .infos > div {
+  margin-right: 4rem;
 }
 .products-list .product > .image {
   width: 50%;
@@ -117,14 +135,11 @@ footer > .container {
 .products-list .product > .infos {
   width: 50%;
 }
-.products-list .product > .infos > div:not(.title) {
-  margin-left: 2rem;
-}
 .products-list .product > .infos .title {
   position: relative;
-  margin: 4rem 0 0 -4rem;
   font-size: 5rem;
   font-weight: 300;
+  margin-top: 3rem;
 }
 .products-list .product > .infos .sizes {
   margin-top: 1rem;
@@ -173,8 +188,10 @@ body {
 
 .container {
   max-width: 130rem;
-  margin: auto;
-  padding: 0 2rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */

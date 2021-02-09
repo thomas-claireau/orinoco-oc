@@ -5,6 +5,26 @@
   text-decoration: none;
   color: #000000;
 
+  &:not(:first-child) {
+    margin-top: 5rem;
+  }
+
+  &.left {
+    flex-direction: row;
+
+    > .infos > div {
+      margin-left: 4rem;
+    }
+  }
+
+  &.right {
+    flex-direction: row-reverse;
+
+    > .infos > div {
+      margin-right: 4rem;
+    }
+  }
+
   > .image {
     width: 50%;
     min-width: 50%;
@@ -32,15 +52,11 @@
   > .infos {
     width: 50%;
 
-    > div:not(.title) {
-      margin-left: 2rem;
-    }
-
     .title {
       position: relative;
-      margin: 4rem 0 0 -4rem;
       font-size: 5rem;
       font-weight: 300;
+      margin-top: 3rem;
     }
 
     .sizes {
