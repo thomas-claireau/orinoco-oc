@@ -27,15 +27,7 @@ header {
       width: 5rem;
       cursor: pointer;
 
-      svg {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-
-        g path {
-          fill: #fff;
-        }
-      }
+      @import './svg-file.scss';
     }
   }
 }

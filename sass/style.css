@@ -127,15 +127,17 @@ footer > .container {
   font-weight: 300;
 }
 .products-list .product > .infos .sizes {
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-size: 2rem;
   font-weight: 600;
 }
 .products-list .product > .infos .description {
+  margin-top: 2rem;
   font-size: 2rem;
   font-weight: 300;
 }
 .products-list .product > .infos .price {
+  margin-top: 2rem;
   font-size: 4rem;
 }
 
