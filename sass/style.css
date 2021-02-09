@@ -1,7 +1,178 @@
-header.orinoco-header {
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+header > .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+header > .container h1 {
+  font-size: 6rem;
+  font-family: "Pangolin";
+  color: #fff;
+}
+@media screen and (max-width: 425px) {
+  header > .container h1 {
+    font-size: 5rem;
+  }
+}
+header > .container .panier {
+  width: 5rem;
+  cursor: pointer;
+}
+header > .container .panier svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+header > .container .panier svg g path {
+  fill: #fff;
+}
+
+.hero {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  z-index: 1;
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+}
+.hero h2 {
+  position: relative;
+  font-size: 8rem;
+  color: #fff;
+  font-weight: 300;
+  z-index: 10;
+}
+
+footer {
+  background: #f2f2f2;
+  padding: 2rem 0;
+}
+footer > .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.products-list .product {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-decoration: none;
+  color: #000000;
+}
+.products-list .product > .image {
+  width: 50%;
+  min-width: 50%;
+  position: relative;
+}
+.products-list .product > .image:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000;
+  opacity: 0.5;
+}
+.products-list .product > .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.products-list .product > .infos {
+  width: 50%;
+}
+.products-list .product > .infos > div:not(.title) {
+  margin-left: 2rem;
+}
+.products-list .product > .infos .title {
+  position: relative;
+  margin: 4rem 0 0 -4rem;
+  font-size: 5rem;
+  font-weight: 300;
+}
+.products-list .product > .infos .sizes {
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.products-list .product > .infos .description {
+  font-size: 2rem;
+  font-weight: 300;
+}
+.products-list .product > .infos .price {
+  font-size: 4rem;
+}
+
+html {
+  font-size: 10px;
+}
+@media screen and (max-width: 1220px) {
+  html {
+    font-size: 9px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: "Lato";
+}
+
+.page-body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 130rem;
+  margin: auto;
+  padding: 0 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */
