@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orinoco</title>
-    <script src="./src/app.js" type="module" defer></script>
     <link rel="stylesheet" href="./sass/style.css">
 </head>
 <body>
@@ -18,8 +17,7 @@
 </header>
 
 <section class="page-body">
-    <section class="hero">
-        <img src="./assets/img/bg-header.jpg" alt="">
+    <section class="hero" style="background-image: url(./assets/img/bg-header.jpg)">
         <h2>Caméras vintages</h2>
     </section>
 
@@ -28,7 +26,7 @@
     <div class="products-list container">
         <a href="#" class="product left">
             <div class="image">
-                <img src="https://picsum.photos/1920/1080" alt="">
+                <img src="https://picsum.photos/1920/1080/?random=1" alt="">
             </div>
             <div class="infos">
                 <div class="title">Le titre du produit</div>
@@ -38,10 +36,16 @@
                 </div>
                 <div class="price">4990 €</div>
             </div>
+            <div class="actions">
+                <button>Voir le produit</button>
+                <button class="add-to-cart">
+                    <svg-file file="./assets/img/shopping-cart.svg"></svg-file>
+                </button>
+            </div>
         </a>
         <a href="#" class="product right">
             <div class="image">
-                <img src="https://picsum.photos/1920/1080" alt="">
+                <img src="https://picsum.photos/1920/1080/?random=2" alt="">
             </div>
             <div class="infos">
                 <div class="title">Le titre du produit</div>
