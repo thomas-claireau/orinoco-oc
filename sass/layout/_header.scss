@@ -1,12 +1,35 @@
 @import '../vars.scss';
 
 header {
+  height: 17rem;
   width: 100%;
   position: fixed;
   top: 0;
   left: 50%;
+  display: flex;
+  align-items: center;
   transform: translateX(-50%);
+  background-color: transparent;
   z-index: 10;
+
+  &.scrolled {
+    height: 11rem;
+    background-color: $light;
+    transition: all 0.3s ease-in-out;
+
+    > .container {
+      h1 {
+        color: $dark;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .panier svg g path {
+        fill: $dark;
+        transition: all 0.3s ease-in-out;
+      }
+
+    }
+  }
 
   > .container {
     display: flex;
@@ -16,7 +39,8 @@ header {
     h1 {
       font-size: 6rem;
       font-family: $secondaryFont;
-      color: #fff;
+      color: $light;
+      transition: all 0.3s ease-in-out;
 
       @media screen and (max-width: $break-small) {
         font-size: 5rem;
@@ -28,6 +52,13 @@ header {
       cursor: pointer;
 
       @import './svg-file.scss';
+
+      svg {
+        g path {
+          fill: $light;
+          transition: all 0.3s ease-in-out;
+        }
+      }
     }
   }
 }

@@ -3,12 +3,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
 header {
+  height: 17rem;
   width: 100%;
   position: fixed;
   top: 0;
   left: 50%;
+  display: flex;
+  align-items: center;
   transform: translateX(-50%);
+  background-color: transparent;
   z-index: 10;
+}
+header.scrolled {
+  height: 11rem;
+  background-color: #dddddd;
+  transition: all 0.3s ease-in-out;
+}
+header.scrolled > .container h1 {
+  color: #101010;
+  transition: all 0.3s ease-in-out;
+}
+header.scrolled > .container .panier svg g path {
+  fill: #101010;
+  transition: all 0.3s ease-in-out;
 }
 header > .container {
   display: flex;
@@ -18,7 +35,8 @@ header > .container {
 header > .container h1 {
   font-size: 6rem;
   font-family: "Pangolin";
-  color: #fff;
+  color: #dddddd;
+  transition: all 0.3s ease-in-out;
 }
 @media screen and (max-width: 425px) {
   header > .container h1 {
@@ -28,6 +46,8 @@ header > .container h1 {
 header > .container .panier {
   width: 5rem;
   cursor: pointer;
+  @import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
 }
 header > .container .panier svg {
   width: 100%;
@@ -35,7 +55,8 @@ header > .container .panier svg {
   object-fit: cover;
 }
 header > .container .panier svg g path {
-  fill: #fff;
+  fill: #dddddd;
+  transition: all 0.3s ease-in-out;
 }
 
 .hero {
@@ -45,6 +66,9 @@ header > .container .panier svg g path {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
 }
 .hero:before {
   content: "";
@@ -53,24 +77,14 @@ header > .container .panier svg g path {
   position: absolute;
   top: 0;
   left: 0;
-  background: #000;
+  background: #101010;
   opacity: 0.5;
   z-index: 1;
-}
-.hero img {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  z-index: 0;
 }
 .hero h2 {
   position: relative;
   font-size: 8rem;
-  color: #fff;
+  color: #dddddd;
   font-weight: 300;
   z-index: 10;
 }
@@ -87,6 +101,8 @@ footer > .container {
 }
 
 .products-list {
+  @import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
   padding: 8rem 0;
 }
 .products-list .product {
@@ -94,7 +110,7 @@ footer > .container {
   justify-content: space-between;
   align-items: flex-start;
   text-decoration: none;
-  color: #000000;
+  color: #101010;
 }
 .products-list .product:not(:first-child) {
   margin-top: 5rem;
@@ -124,7 +140,7 @@ footer > .container {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #000;
+  background: #101010;
   opacity: 0.5;
 }
 .products-list .product > .image img {
@@ -141,6 +157,11 @@ footer > .container {
   font-weight: 300;
   margin-top: 3rem;
 }
+@media screen and (max-width: 1024px) {
+  .products-list .product > .infos .title {
+    margin-top: 0;
+  }
+}
 .products-list .product > .infos .sizes {
   margin-top: 1rem;
   font-size: 2rem;
@@ -155,7 +176,6 @@ footer > .container {
   margin-top: 2rem;
   font-size: 4rem;
 }
-
 html {
   font-size: 10px;
 }
@@ -188,6 +208,7 @@ body {
 
 .container {
   max-width: 130rem;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
   padding-right: 2rem;
