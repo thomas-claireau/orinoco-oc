@@ -1,0 +1,38 @@
+.button {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  -webkit-appearance: none;
+  border: none;
+  background-color: #3d4788;
+  padding: 2rem 3rem;
+  color: $light;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: normal;
+  border-radius: 1rem;
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-0.2rem);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &.add-to-cart {
+    width: 7rem;
+    height: 100%;
+    max-height: 6.2rem;
+    padding: 1.8rem;
+    @import './_svg-file';
+
+    svg {
+      position: relative;
+      left: -0.2rem;
+      fill: $light;
+    }
+  }
+}

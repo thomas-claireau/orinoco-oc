@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
 header {
   height: 17rem;
   width: 100%;
@@ -16,7 +14,7 @@ header {
 }
 header.scrolled {
   height: 11rem;
-  background-color: #dddddd;
+  background-color: #fff;
   transition: all 0.3s ease-in-out;
 }
 header.scrolled > .container h1 {
@@ -35,7 +33,7 @@ header > .container {
 header > .container h1 {
   font-size: 6rem;
   font-family: "Pangolin";
-  color: #dddddd;
+  color: #fff;
   transition: all 0.3s ease-in-out;
 }
 @media screen and (max-width: 425px) {
@@ -46,8 +44,6 @@ header > .container h1 {
 header > .container .panier {
   width: 5rem;
   cursor: pointer;
-  @import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
 }
 header > .container .panier svg {
   width: 100%;
@@ -55,7 +51,7 @@ header > .container .panier svg {
   object-fit: cover;
 }
 header > .container .panier svg g path {
-  fill: #dddddd;
+  fill: #fff;
   transition: all 0.3s ease-in-out;
 }
 
@@ -84,7 +80,7 @@ header > .container .panier svg g path {
 .hero h2 {
   position: relative;
   font-size: 8rem;
-  color: #dddddd;
+  color: #fff;
   font-weight: 300;
   z-index: 10;
 }
@@ -101,8 +97,6 @@ footer > .container {
 }
 
 .products-list {
-  @import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
   padding: 8rem 0;
 }
 .products-list .product {
@@ -155,7 +149,7 @@ footer > .container {
   position: relative;
   font-size: 5rem;
   font-weight: 300;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
 }
 @media screen and (max-width: 1024px) {
   .products-list .product > .infos .title {
@@ -176,6 +170,56 @@ footer > .container {
   margin-top: 2rem;
   font-size: 4rem;
 }
+.products-list .product .actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 3rem;
+}
+.products-list .product .actions .add-to-cart {
+  margin-left: 2rem;
+}
+
+.button {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  -webkit-appearance: none;
+  border: none;
+  background-color: #3d4788;
+  padding: 2rem 3rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: normal;
+  border-radius: 1rem;
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.button:hover {
+  transform: translateY(-0.2rem);
+  transition: all 0.3s ease-in-out;
+}
+.button.add-to-cart {
+  width: 7rem;
+  height: 100%;
+  max-height: 6.2rem;
+  padding: 1.8rem;
+}
+.button.add-to-cart svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.button.add-to-cart svg {
+  position: relative;
+  left: -0.2rem;
+  fill: #fff;
+}
+
 html {
   font-size: 10px;
 }

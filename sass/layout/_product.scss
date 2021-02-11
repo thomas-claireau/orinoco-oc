@@ -1,5 +1,3 @@
-@import '../vars';
-
 .product {
   display: flex;
   justify-content: space-between;
@@ -58,7 +56,7 @@
       position: relative;
       font-size: 5rem;
       font-weight: 300;
-      margin-top: 3rem;
+      margin-top: 1.5rem;
 
       @media screen and (max-width: $break-medium) {
         margin-top: 0;
@@ -85,6 +83,14 @@
   }
 
   .actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 3rem;
+
+    .add-to-cart {
+      margin-left: 2rem;
+    }
 
   }
 }
