@@ -6,7 +6,7 @@
   flex-direction: column;
   -webkit-appearance: none;
   border: none;
-  background-color: #3d4788;
+  background-color: $bleu;
   padding: 2rem 3rem;
   color: $light;
   text-decoration: none;
@@ -24,6 +24,7 @@
   }
 
   &.add-to-cart {
+    min-width: fit-content;
     width: fit-content;
     height: 100%;
     max-height: 6.2rem;

@@ -8,12 +8,34 @@
       margin-left: 3rem;
     }
 
-    .actions button.add-to-cart {
-      flex-direction: row;
-      margin-left: 0;
+    .actions {
+      button.add-to-cart {
+        flex-direction: row;
+        margin-left: 0;
 
-      svg {
+        svg {
+          margin-left: 2rem;
+        }
+      }
+
+      .form-field {
+        height: 100%;
         margin-left: 2rem;
+
+        label, input {
+          font-size: 1.8rem;
+          font-weight: 600;
+        }
+
+        input {
+          height: 100%;
+          padding: 1.8rem 1rem 1.8rem 2rem;
+          margin-left: 1rem;
+          -webkit-appearance: none;
+          border: 2px solid $bleu;
+          border-radius: 1rem;
+          outline: 0;
+        }
       }
     }
   }

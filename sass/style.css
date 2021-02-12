@@ -284,6 +284,23 @@ footer > .container {
 .product-detail .product .actions button.add-to-cart svg {
   margin-left: 2rem;
 }
+.product-detail .product .actions .form-field {
+  height: 100%;
+  margin-left: 2rem;
+}
+.product-detail .product .actions .form-field label, .product-detail .product .actions .form-field input {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.product-detail .product .actions .form-field input {
+  height: 100%;
+  padding: 1.8rem 1rem 1.8rem 2rem;
+  margin-left: 1rem;
+  -webkit-appearance: none;
+  border: 2px solid #3d4788;
+  border-radius: 1rem;
+  outline: 0;
+}
 
 .button {
   width: fit-content;
@@ -310,6 +327,7 @@ footer > .container {
   transition: all 0.3s ease-in-out;
 }
 .button.add-to-cart {
+  min-width: fit-content;
   width: fit-content;
   height: 100%;
   max-height: 6.2rem;

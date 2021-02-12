@@ -39,6 +39,10 @@ export default class ProductDetail extends HTMLElement {
                         <button class="button add-to-cart" data-id="${data._id}">
                             Ajouter au panier <svg-file file="../assets/img/shopping-cart.svg"></svg-file>
                         </button>
+                        <div class="form-field">
+                            <label for="quantity">Quantité : </label>
+                            <input type="number" name="quantity" value="1" min="1" max="99">
+                        </div>
                     </div>
                 </div>
             </div>
