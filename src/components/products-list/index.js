@@ -37,13 +37,13 @@ export default class ProductList extends HTMLElement {
             <div class="infos">
                 <div class="title">${data.name}</div>
                 <div class="sizes">
-                    ${data.lenses.forEach(lense => `<span>${lense}</span>`)}
+                    ${data.lenses.map(lense => `<span>${lense}</span>`).join(', ')}
                 </div>
                 <div class="description">${data.description}</div>
                 <div class="price">${renderPrice(data.price)}</div>
                 <div class="actions">
-                    <a href="#" class="button">Voir ce produit</a>
-                    <button class="button add-to-cart" data-id="${data.id}">
+                    <a href="product/?id=${data._id}" class="button">Voir ce produit</a>
+                    <button class="button add-to-cart" data-id="${data._id}">
                         <svg-file file="./assets/img/shopping-cart.svg"></svg-file>
                     </button>
                 </div>

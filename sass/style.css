@@ -55,6 +55,10 @@ header > .container .panier svg g path {
   transition: all 0.3s ease-in-out;
 }
 
+body.page-produit .hero {
+  height: 40vh;
+}
+
 .hero {
   width: 100%;
   height: 60vh;
@@ -179,6 +183,107 @@ footer > .container {
 .products-list .product .actions .add-to-cart {
   margin-left: 2rem;
 }
+.products-list button.add-to-cart {
+  padding: 1.8rem;
+}
+.products-list button.add-to-cart svg {
+  position: relative;
+  left: -0.2rem;
+}
+
+.product-detail {
+  padding: 8rem 0;
+}
+.product-detail .product {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-decoration: none;
+  color: #101010;
+}
+.product-detail .product:not(:first-child) {
+  margin-top: 5rem;
+}
+.product-detail .product.left {
+  flex-direction: row;
+}
+.product-detail .product.left > .infos > div {
+  margin-left: 4rem;
+}
+.product-detail .product.right {
+  flex-direction: row-reverse;
+}
+.product-detail .product.right > .infos > div {
+  margin-right: 4rem;
+}
+.product-detail .product > .image {
+  width: 50%;
+  min-width: 50%;
+  position: relative;
+}
+.product-detail .product > .image:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #101010;
+  opacity: 0.5;
+}
+.product-detail .product > .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-detail .product > .infos {
+  width: 50%;
+}
+.product-detail .product > .infos .title {
+  position: relative;
+  font-size: 5rem;
+  font-weight: 300;
+  margin-top: 1.5rem;
+}
+@media screen and (max-width: 1024px) {
+  .product-detail .product > .infos .title {
+    margin-top: 0;
+  }
+}
+.product-detail .product > .infos .sizes {
+  margin-top: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.product-detail .product > .infos .description {
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: 300;
+}
+.product-detail .product > .infos .price {
+  margin-top: 2rem;
+  font-size: 4rem;
+}
+.product-detail .product .actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 3rem;
+}
+.product-detail .product .actions .add-to-cart {
+  margin-left: 2rem;
+}
+.product-detail .product .infos {
+  margin-left: 3rem;
+}
+.product-detail .product .actions button.add-to-cart {
+  flex-direction: row;
+  margin-left: 0;
+}
+.product-detail .product .actions button.add-to-cart svg {
+  margin-left: 2rem;
+}
 
 .button {
   width: fit-content;
@@ -198,16 +303,16 @@ footer > .container {
   transform: translateY(0);
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+  outline: 0;
 }
 .button:hover {
   transform: translateY(-0.2rem);
   transition: all 0.3s ease-in-out;
 }
 .button.add-to-cart {
-  width: 7rem;
+  width: fit-content;
   height: 100%;
   max-height: 6.2rem;
-  padding: 1.8rem;
 }
 .button.add-to-cart svg {
   width: 100%;
@@ -215,8 +320,7 @@ footer > .container {
   object-fit: cover;
 }
 .button.add-to-cart svg {
-  position: relative;
-  left: -0.2rem;
+  width: 4rem;
   fill: #fff;
 }
 

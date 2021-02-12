@@ -3,4 +3,12 @@
 
   padding: 8rem 0;
 
+  button.add-to-cart {
+    padding: 1.8rem;
+
+    svg {
+      position: relative;
+      left: -0.2rem;
+    }
+  }
 }
