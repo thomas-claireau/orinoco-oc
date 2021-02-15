@@ -5,6 +5,15 @@
   text-decoration: none;
   color: $dark;
 
+  @media screen and (max-width: $break-tablet) {
+    max-width: 80%;
+    margin: auto;
+  }
+
+  @media screen and (max-width: $break-small) {
+    max-width: 100%;
+  }
+
   &:not(:first-child) {
     margin-top: 5rem;
   }
@@ -12,16 +21,36 @@
   &.left {
     flex-direction: row;
 
+    @media screen and (max-width: $break-tablet) {
+      flex-direction: column;
+    }
+
     > .infos > div {
       margin-left: 4rem;
+
+      @media screen and (max-width: $break-tablet) {
+        margin-left: 0;
+        margin-top: 2rem;
+        text-align: center;
+      }
     }
   }
 
   &.right {
     flex-direction: row-reverse;
 
+    @media screen and (max-width: $break-tablet) {
+      flex-direction: column;
+    }
+
     > .infos > div {
       margin-right: 4rem;
+
+      @media screen and (max-width: $break-tablet) {
+        margin-left: 0;
+        margin-top: 2rem;
+        text-align: center;
+      }
     }
   }
 
@@ -29,6 +58,11 @@
     width: 50%;
     min-width: 50%;
     position: relative;
+
+    @media screen and (max-width: $break-tablet) {
+      width: 100%;
+      min-width: 100%;
+    }
 
     &:before {
       content: "";
@@ -51,6 +85,10 @@
 
   > .infos {
     width: 50%;
+
+    @media screen and (max-width: $break-tablet) {
+      width: 100%
+    }
 
     .title {
       position: relative;
@@ -87,6 +125,10 @@
     justify-content: flex-start;
     align-items: center;
     margin-top: 3rem;
+
+    @media screen and (max-width: $break-tablet) {
+      justify-content: center;
+    }
 
     .add-to-cart {
       margin-left: 2rem;

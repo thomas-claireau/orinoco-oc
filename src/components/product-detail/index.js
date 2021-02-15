@@ -30,9 +30,9 @@ export default class ProductDetail extends HTMLElement {
                 </div>
                 <div class="infos">
                     <div class="title">${data.name}</div>
-                    <div class="sizes">
-                        ${data.lenses.map(lense => `<span>${lense}</span>`).join(', ')}
-                    </div>
+                    <select class="sizes" name="sizes">
+                        ${data.lenses.map(lense => `<option>${lense}</option>`).join(', ')}
+                    </select>
                     <div class="description">${data.description}</div>
                     <div class="price">${renderPrice(data.price)}</div>
                     <div class="actions">

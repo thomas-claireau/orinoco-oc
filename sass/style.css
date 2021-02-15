@@ -30,6 +30,9 @@ header > .container {
   justify-content: space-between;
   align-items: center;
 }
+header > .container > a {
+  text-decoration: none;
+}
 header > .container h1 {
   font-size: 6rem;
   font-family: "Pangolin";
@@ -70,6 +73,11 @@ body.page-produit .hero {
   background-position: center;
   background-attachment: scroll;
 }
+@media screen and (max-width: 768px) {
+  .hero {
+    height: 40vh;
+  }
+}
 .hero:before {
   content: "";
   width: 100%;
@@ -87,6 +95,12 @@ body.page-produit .hero {
   color: #fff;
   font-weight: 300;
   z-index: 10;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .hero h2 {
+    font-size: 5rem;
+  }
 }
 
 footer {
@@ -110,25 +124,66 @@ footer > .container {
   text-decoration: none;
   color: #101010;
 }
+@media screen and (max-width: 768px) {
+  .products-list .product {
+    max-width: 80%;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 425px) {
+  .products-list .product {
+    max-width: 100%;
+  }
+}
 .products-list .product:not(:first-child) {
   margin-top: 5rem;
 }
 .products-list .product.left {
   flex-direction: row;
 }
+@media screen and (max-width: 768px) {
+  .products-list .product.left {
+    flex-direction: column;
+  }
+}
 .products-list .product.left > .infos > div {
   margin-left: 4rem;
+}
+@media screen and (max-width: 768px) {
+  .products-list .product.left > .infos > div {
+    margin-left: 0;
+    margin-top: 2rem;
+    text-align: center;
+  }
 }
 .products-list .product.right {
   flex-direction: row-reverse;
 }
+@media screen and (max-width: 768px) {
+  .products-list .product.right {
+    flex-direction: column;
+  }
+}
 .products-list .product.right > .infos > div {
   margin-right: 4rem;
+}
+@media screen and (max-width: 768px) {
+  .products-list .product.right > .infos > div {
+    margin-left: 0;
+    margin-top: 2rem;
+    text-align: center;
+  }
 }
 .products-list .product > .image {
   width: 50%;
   min-width: 50%;
   position: relative;
+}
+@media screen and (max-width: 768px) {
+  .products-list .product > .image {
+    width: 100%;
+    min-width: 100%;
+  }
 }
 .products-list .product > .image:before {
   content: "";
@@ -148,6 +203,11 @@ footer > .container {
 }
 .products-list .product > .infos {
   width: 50%;
+}
+@media screen and (max-width: 768px) {
+  .products-list .product > .infos {
+    width: 100%;
+  }
 }
 .products-list .product > .infos .title {
   position: relative;
@@ -180,6 +240,11 @@ footer > .container {
   align-items: center;
   margin-top: 3rem;
 }
+@media screen and (max-width: 768px) {
+  .products-list .product .actions {
+    justify-content: center;
+  }
+}
 .products-list .product .actions .add-to-cart {
   margin-left: 2rem;
 }
@@ -201,25 +266,66 @@ footer > .container {
   text-decoration: none;
   color: #101010;
 }
+@media screen and (max-width: 768px) {
+  .product-detail .product {
+    max-width: 80%;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 425px) {
+  .product-detail .product {
+    max-width: 100%;
+  }
+}
 .product-detail .product:not(:first-child) {
   margin-top: 5rem;
 }
 .product-detail .product.left {
   flex-direction: row;
 }
+@media screen and (max-width: 768px) {
+  .product-detail .product.left {
+    flex-direction: column;
+  }
+}
 .product-detail .product.left > .infos > div {
   margin-left: 4rem;
+}
+@media screen and (max-width: 768px) {
+  .product-detail .product.left > .infos > div {
+    margin-left: 0;
+    margin-top: 2rem;
+    text-align: center;
+  }
 }
 .product-detail .product.right {
   flex-direction: row-reverse;
 }
+@media screen and (max-width: 768px) {
+  .product-detail .product.right {
+    flex-direction: column;
+  }
+}
 .product-detail .product.right > .infos > div {
   margin-right: 4rem;
+}
+@media screen and (max-width: 768px) {
+  .product-detail .product.right > .infos > div {
+    margin-left: 0;
+    margin-top: 2rem;
+    text-align: center;
+  }
 }
 .product-detail .product > .image {
   width: 50%;
   min-width: 50%;
   position: relative;
+}
+@media screen and (max-width: 768px) {
+  .product-detail .product > .image {
+    width: 100%;
+    min-width: 100%;
+  }
 }
 .product-detail .product > .image:before {
   content: "";
@@ -239,6 +345,11 @@ footer > .container {
 }
 .product-detail .product > .infos {
   width: 50%;
+}
+@media screen and (max-width: 768px) {
+  .product-detail .product > .infos {
+    width: 100%;
+  }
 }
 .product-detail .product > .infos .title {
   position: relative;
@@ -271,15 +382,53 @@ footer > .container {
   align-items: center;
   margin-top: 3rem;
 }
+@media screen and (max-width: 768px) {
+  .product-detail .product .actions {
+    justify-content: center;
+  }
+}
 .product-detail .product .actions .add-to-cart {
   margin-left: 2rem;
+}
+@media screen and (max-width: 768px) {
+  .product-detail .product {
+    flex-direction: column;
+  }
 }
 .product-detail .product .infos {
   margin-left: 3rem;
 }
+@media screen and (max-width: 768px) {
+  .product-detail .product .infos {
+    margin-left: 0;
+    margin-top: 2rem;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .product-detail .product .infos > div {
+    margin-top: 2rem;
+  }
+}
+.product-detail .product .actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .product-detail .product .actions {
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+}
 .product-detail .product .actions button.add-to-cart {
   flex-direction: row;
   margin-left: 0;
+}
+@media screen and (max-width: 768px) {
+  .product-detail .product .actions button.add-to-cart {
+    margin-top: 2rem;
+  }
 }
 .product-detail .product .actions button.add-to-cart svg {
   margin-left: 2rem;
@@ -287,6 +436,11 @@ footer > .container {
 .product-detail .product .actions .form-field {
   height: 100%;
   margin-left: 2rem;
+}
+@media screen and (max-width: 768px) {
+  .product-detail .product .actions .form-field {
+    margin-left: 0;
+  }
 }
 .product-detail .product .actions .form-field label, .product-detail .product .actions .form-field input {
   font-size: 1.8rem;

@@ -1,17 +1,45 @@
 .product-detail {
   @import './product';
-
   padding: 8rem 0;
 
   .product {
+    @media screen and (max-width: $break-tablet) {
+      flex-direction: column;
+    }
+
     .infos {
       margin-left: 3rem;
+
+      @media screen and (max-width: $break-tablet) {
+        margin-left: 0;
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      > div {
+        @media screen and (max-width: $break-tablet) {
+          margin-top: 2rem;
+        }
+      }
     }
 
     .actions {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      @media screen and (max-width: $break-tablet) {
+        justify-content: center;
+        flex-direction: column-reverse;
+      }
+
       button.add-to-cart {
         flex-direction: row;
         margin-left: 0;
+
+        @media screen and (max-width: $break-tablet) {
+          margin-top: 2rem;
+        }
 
         svg {
           margin-left: 2rem;
@@ -21,6 +49,10 @@
       .form-field {
         height: 100%;
         margin-left: 2rem;
+
+        @media screen and (max-width: $break-tablet) {
+          margin-left: 0;
+        }
 
         label, input {
           font-size: 1.8rem;
