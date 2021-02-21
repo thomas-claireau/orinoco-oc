@@ -1,0 +1,18 @@
+.product-cart {
+  --length: 3rem;
+
+  width: var(--length);
+  height: var(--length);
+  position: absolute;
+  top: -1.5rem;
+  right: -1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $light;
+  border-radius: var(--length);
+  font-size: calc(var(--length) / 2);
+  font-weight: 700;
+  color: $bleu;
+  box-shadow: $box-shadow;
+}

@@ -43,9 +43,7 @@ export default class ProductList extends HTMLElement {
                 <div class="price">${renderPrice(data.price)}</div>
                 <div class="actions">
                     <a href="product/?id=${data._id}" class="button">Voir ce produit</a>
-                    <button class="button add-to-cart" data-id="${data._id}">
-                        <svg-file file="./assets/img/shopping-cart.svg"></svg-file>
-                    </button>
+                    <add-to-cart id="${data._id}" svg-file="./assets/img/shopping-cart.svg" no-text="1"></add-to-cart>
                 </div>
             </div>
         </div>

@@ -11,10 +11,12 @@ header {
   transform: translateX(-50%);
   background-color: transparent;
   z-index: 10;
+  box-shadow: 0 0 0 0 transparent;
 }
 header.scrolled {
   height: 11rem;
   background-color: #fff;
+  box-shadow: 1px 1px 11px 2px #86868685;
   transition: all 0.3s ease-in-out;
 }
 header.scrolled > .container h1 {
@@ -46,6 +48,7 @@ header > .container h1 {
 }
 header > .container .panier {
   width: 5rem;
+  position: relative;
   cursor: pointer;
 }
 header > .container .panier svg {
@@ -494,6 +497,24 @@ footer > .container {
 .button.add-to-cart svg {
   width: 4rem;
   fill: #fff;
+}
+
+.product-cart {
+  --length: 3rem;
+  width: var(--length);
+  height: var(--length);
+  position: absolute;
+  top: -1.5rem;
+  right: -1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: var(--length);
+  font-size: calc(var(--length) / 2);
+  font-weight: 700;
+  color: #3d4788;
+  box-shadow: 1px 1px 11px 2px #86868685;
 }
 
 html {
