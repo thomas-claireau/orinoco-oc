@@ -4,6 +4,7 @@ import SvgFile from "./components/svg-file";
 import ProductDetail from "./components/product-detail";
 import AddToCart from "./components/add-to-cart";
 import ProductCart from "./components/counter-cart";
+import ProductsCart from "./components/products-cart";
 
 document.addEventListener("DOMContentLoaded", () => {
     customElements.define("date-footer", DateFooter)
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     customElements.define('product-detail', ProductDetail)
     customElements.define('add-to-cart', AddToCart)
     customElements.define('counter-cart', ProductCart)
+    customElements.define('products-cart', ProductsCart)
 
     const header = document.querySelector('header')
 
