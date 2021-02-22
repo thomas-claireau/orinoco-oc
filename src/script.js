@@ -1,19 +1,8 @@
-import DateFooter from "./components/date-footer";
-import ProductList from "./components/products-list";
-import SvgFile from "./components/svg-file";
-import ProductDetail from "./components/product-detail";
-import AddToCart from "./components/add-to-cart";
-import ProductCart from "./components/counter-cart";
-import ProductsCart from "./components/products-cart";
+import "./products.js"
+import SvgFile from "./svg-file.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    customElements.define("date-footer", DateFooter)
-    customElements.define("products-list", ProductList)
-    customElements.define("svg-file", SvgFile)
-    customElements.define('product-detail', ProductDetail)
-    customElements.define('add-to-cart', AddToCart)
-    customElements.define('counter-cart', ProductCart)
-    customElements.define('products-cart', ProductsCart)
+    customElements.define('svg-file', SvgFile);
 
     const header = document.querySelector('header')
 

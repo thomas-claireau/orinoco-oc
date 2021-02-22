@@ -117,10 +117,10 @@ footer > .container {
   font-size: 1.8rem;
 }
 
-.products-list {
+#products-list {
   padding: 8rem 0;
 }
-.products-list .product {
+#products-list .product {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -128,67 +128,67 @@ footer > .container {
   color: #101010;
 }
 @media screen and (max-width: 768px) {
-  .products-list .product {
+  #products-list .product {
     max-width: 80%;
     margin: auto;
   }
 }
 @media screen and (max-width: 425px) {
-  .products-list .product {
+  #products-list .product {
     max-width: 100%;
   }
 }
-.products-list .product:not(:first-child) {
+#products-list .product:not(:first-child) {
   margin-top: 5rem;
 }
-.products-list .product.left {
+#products-list .product.left {
   flex-direction: row;
 }
 @media screen and (max-width: 768px) {
-  .products-list .product.left {
+  #products-list .product.left {
     flex-direction: column;
   }
 }
-.products-list .product.left > .infos > div {
+#products-list .product.left > .infos > div {
   margin-left: 4rem;
 }
 @media screen and (max-width: 768px) {
-  .products-list .product.left > .infos > div {
+  #products-list .product.left > .infos > div {
     margin-left: 0;
     margin-top: 2rem;
     text-align: center;
   }
 }
-.products-list .product.right {
+#products-list .product.right {
   flex-direction: row-reverse;
 }
 @media screen and (max-width: 768px) {
-  .products-list .product.right {
+  #products-list .product.right {
     flex-direction: column;
   }
 }
-.products-list .product.right > .infos > div {
+#products-list .product.right > .infos > div {
   margin-right: 4rem;
 }
 @media screen and (max-width: 768px) {
-  .products-list .product.right > .infos > div {
+  #products-list .product.right > .infos > div {
     margin-left: 0;
     margin-top: 2rem;
     text-align: center;
   }
 }
-.products-list .product > .image {
+#products-list .product > .image {
   width: 50%;
   min-width: 50%;
   position: relative;
 }
 @media screen and (max-width: 768px) {
-  .products-list .product > .image {
+  #products-list .product > .image {
     width: 100%;
     min-width: 100%;
   }
 }
-.products-list .product > .image:before {
+#products-list .product > .image:before {
   content: "";
   width: 100%;
   height: 100%;
@@ -199,62 +199,62 @@ footer > .container {
   background: #101010;
   opacity: 0.5;
 }
-.products-list .product > .image img {
+#products-list .product > .image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.products-list .product > .infos {
+#products-list .product > .infos {
   width: 50%;
 }
 @media screen and (max-width: 768px) {
-  .products-list .product > .infos {
+  #products-list .product > .infos {
     width: 100%;
   }
 }
-.products-list .product > .infos .title {
+#products-list .product > .infos .title {
   position: relative;
   font-size: 5rem;
   font-weight: 300;
   margin-top: 1.5rem;
 }
 @media screen and (max-width: 1024px) {
-  .products-list .product > .infos .title {
+  #products-list .product > .infos .title {
     margin-top: 0;
   }
 }
-.products-list .product > .infos .sizes {
+#products-list .product > .infos .sizes {
   margin-top: 1rem;
   font-size: 2rem;
   font-weight: 600;
 }
-.products-list .product > .infos .description {
+#products-list .product > .infos .description {
   margin-top: 2rem;
   font-size: 2rem;
   font-weight: 300;
 }
-.products-list .product > .infos .price {
+#products-list .product > .infos .price {
   margin-top: 2rem;
   font-size: 4rem;
 }
-.products-list .product .actions {
+#products-list .product .actions {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-top: 3rem;
 }
 @media screen and (max-width: 768px) {
-  .products-list .product .actions {
+  #products-list .product .actions {
     justify-content: center;
   }
 }
-.products-list .product .actions .add-to-cart {
+#products-list .product .actions .add-to-cart {
   margin-left: 2rem;
 }
-.products-list button.add-to-cart {
+#products-list button.add-to-cart {
   padding: 1.8rem;
 }
-.products-list button.add-to-cart svg {
+#products-list button.add-to-cart svg {
   position: relative;
   left: -0.2rem;
 }

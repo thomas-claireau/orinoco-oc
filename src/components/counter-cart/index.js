@@ -7,6 +7,10 @@ export default class Cart extends HTMLElement {
         if (!this.ids) this.ids = []
     }
 
+    static getInstance() {
+        return this;
+    }
+
     connectedCallback() {
         this.render()
     }
@@ -18,7 +22,7 @@ export default class Cart extends HTMLElement {
         cart.innerHTML = this.innerHTML
     }
 
-    create(id, qty = 1) {
+    static create(id, qty = 1) {
         qty = Number(qty);
 
         if (Number.isInteger(qty)) {
