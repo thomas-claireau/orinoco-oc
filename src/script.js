@@ -7,6 +7,7 @@ import Cart from "./cart.js";
 document.addEventListener("DOMContentLoaded", () => {
     customElements.define('svg-file', SvgFile);
 
+    // header scrolled
     const header = document.querySelector('header')
 
     window.addEventListener('scroll', () => {
@@ -25,7 +26,7 @@ document.onreadystatechange = function () {
         const counterCart = document.getElementById("counter-cart")
 
         if (!btnsAtc || !counterCart) return
-        
+
         const cart = new Cart()
 
         btnsAtc.forEach(btn => {
