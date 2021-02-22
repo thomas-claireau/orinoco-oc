@@ -499,7 +499,7 @@ footer > .container {
   fill: #fff;
 }
 
-.counter-cart {
+#counter-cart {
   --length: 3rem;
   width: var(--length);
   height: var(--length);

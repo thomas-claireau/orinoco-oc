@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="description">${product.description}</div>
                     <div class="price">${renderPrice(product.price)}</div>
                     <div class="actions">
-                        <button class="button add-to-cart">
+                        <button class="button add-to-cart" data-id="${product._id}">
                             Ajouter au panier
                             <svg-file file="/orinoco-oc/assets/img/shopping-cart.svg"></svg-file>
                         </button> 

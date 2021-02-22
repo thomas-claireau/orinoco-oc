@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="price">${renderPrice(product.price)}</div>
                 <div class="actions">
                     <a href="product/?id=${product._id}" class="button">Voir ce produit</a>
-                    <button class="button add-to-cart">
+                    <button class="button add-to-cart" data-id="${product._id}">
                         <svg-file file="./assets/img/shopping-cart.svg"></svg-file>
                     </button> 
                 </div>
