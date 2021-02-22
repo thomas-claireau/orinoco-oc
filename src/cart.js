@@ -1,8 +1,8 @@
+import {group} from "./functions.js";
+
 export default class Cart {
     constructor() {
-        this.ids = JSON.parse(localStorage.getItem("ids"))
-
-        if (!this.ids) this.ids = []
+        this.ids = JSON.parse(localStorage.getItem("ids")) || []
     }
 
     create(id, qty = 1) {
@@ -32,18 +32,6 @@ export default class Cart {
     }
 
     renderCart() {
-        const groupIds = this.group(this.ids)
-
-        console.log(groupIds);
-    }
-
-    group(array) {
-        if (!array) return false;
-
-        return array.reduce(function (prev, item) {
-            if (item in prev) prev[item]++;
-            else prev[item] = 1;
-            return prev;
-        }, {});
+        return group(this.ids)
     }
 }

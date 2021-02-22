@@ -3,9 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!counter) return;
 
-    let ids = JSON.parse(localStorage.getItem("ids"));
-
-    if (!ids) ids = [];
+    const ids = JSON.parse(localStorage.getItem("ids")) || [];
 
     counter.innerText = ids.length;
 })

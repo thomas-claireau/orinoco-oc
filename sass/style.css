@@ -459,6 +459,29 @@ footer > .container {
   outline: 0;
 }
 
+#products-cart .product {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#products-cart .product > img {
+  --size: 12rem;
+  width: var(--size);
+  min-width: var(--size);
+  height: var(--size);
+  object-fit: cover;
+}
+#products-cart .product > div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+#products-cart .product > div > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .button {
   width: fit-content;
   display: flex;
