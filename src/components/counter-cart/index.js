@@ -12,9 +12,9 @@ export default class Cart extends HTMLElement {
     }
 
     render() {
-        this.innerHTML = `<span class="product-cart">${this.ids.length}</span>`;
+        this.innerHTML = `<span class="counter-cart">${this.ids.length}</span>`;
 
-        const cart = document.createElement("product-cart")
+        const cart = document.createElement("counter-cart")
         cart.innerHTML = this.innerHTML
     }
 
