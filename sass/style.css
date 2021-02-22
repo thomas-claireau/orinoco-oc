@@ -259,10 +259,10 @@ footer > .container {
   left: -0.2rem;
 }
 
-.product-detail {
+#product-detail {
   padding: 8rem 0;
 }
-.product-detail .product {
+#product-detail .product {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -270,67 +270,67 @@ footer > .container {
   color: #101010;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product {
+  #product-detail .product {
     max-width: 80%;
     margin: auto;
   }
 }
 @media screen and (max-width: 425px) {
-  .product-detail .product {
+  #product-detail .product {
     max-width: 100%;
   }
 }
-.product-detail .product:not(:first-child) {
+#product-detail .product:not(:first-child) {
   margin-top: 5rem;
 }
-.product-detail .product.left {
+#product-detail .product.left {
   flex-direction: row;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product.left {
+  #product-detail .product.left {
     flex-direction: column;
   }
 }
-.product-detail .product.left > .infos > div {
+#product-detail .product.left > .infos > div {
   margin-left: 4rem;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product.left > .infos > div {
+  #product-detail .product.left > .infos > div {
     margin-left: 0;
     margin-top: 2rem;
     text-align: center;
   }
 }
-.product-detail .product.right {
+#product-detail .product.right {
   flex-direction: row-reverse;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product.right {
+  #product-detail .product.right {
     flex-direction: column;
   }
 }
-.product-detail .product.right > .infos > div {
+#product-detail .product.right > .infos > div {
   margin-right: 4rem;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product.right > .infos > div {
+  #product-detail .product.right > .infos > div {
     margin-left: 0;
     margin-top: 2rem;
     text-align: center;
   }
 }
-.product-detail .product > .image {
+#product-detail .product > .image {
   width: 50%;
   min-width: 50%;
   position: relative;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product > .image {
+  #product-detail .product > .image {
     width: 100%;
     min-width: 100%;
   }
 }
-.product-detail .product > .image:before {
+#product-detail .product > .image:before {
   content: "";
   width: 100%;
   height: 100%;
@@ -341,115 +341,115 @@ footer > .container {
   background: #101010;
   opacity: 0.5;
 }
-.product-detail .product > .image img {
+#product-detail .product > .image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.product-detail .product > .infos {
+#product-detail .product > .infos {
   width: 50%;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product > .infos {
+  #product-detail .product > .infos {
     width: 100%;
   }
 }
-.product-detail .product > .infos .title {
+#product-detail .product > .infos .title {
   position: relative;
   font-size: 5rem;
   font-weight: 300;
   margin-top: 1.5rem;
 }
 @media screen and (max-width: 1024px) {
-  .product-detail .product > .infos .title {
+  #product-detail .product > .infos .title {
     margin-top: 0;
   }
 }
-.product-detail .product > .infos .sizes {
+#product-detail .product > .infos .sizes {
   margin-top: 1rem;
   font-size: 2rem;
   font-weight: 600;
 }
-.product-detail .product > .infos .description {
+#product-detail .product > .infos .description {
   margin-top: 2rem;
   font-size: 2rem;
   font-weight: 300;
 }
-.product-detail .product > .infos .price {
+#product-detail .product > .infos .price {
   margin-top: 2rem;
   font-size: 4rem;
 }
-.product-detail .product .actions {
+#product-detail .product .actions {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-top: 3rem;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product .actions {
+  #product-detail .product .actions {
     justify-content: center;
   }
 }
-.product-detail .product .actions .add-to-cart {
+#product-detail .product .actions .add-to-cart {
   margin-left: 2rem;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product {
+  #product-detail .product {
     flex-direction: column;
   }
 }
-.product-detail .product .infos {
+#product-detail .product .infos {
   margin-left: 3rem;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product .infos {
+  #product-detail .product .infos {
     margin-left: 0;
     margin-top: 2rem;
     text-align: center;
   }
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product .infos > div {
+  #product-detail .product .infos > div {
     margin-top: 2rem;
   }
 }
-.product-detail .product .actions {
+#product-detail .product .actions {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product .actions {
+  #product-detail .product .actions {
     justify-content: center;
     flex-direction: column-reverse;
   }
 }
-.product-detail .product .actions button.add-to-cart {
+#product-detail .product .actions button.add-to-cart {
   flex-direction: row;
   margin-left: 0;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product .actions button.add-to-cart {
+  #product-detail .product .actions button.add-to-cart {
     margin-top: 2rem;
   }
 }
-.product-detail .product .actions button.add-to-cart svg {
+#product-detail .product .actions button.add-to-cart svg {
   margin-left: 2rem;
 }
-.product-detail .product .actions .form-field {
+#product-detail .product .actions .form-field {
   height: 100%;
   margin-left: 2rem;
 }
 @media screen and (max-width: 768px) {
-  .product-detail .product .actions .form-field {
+  #product-detail .product .actions .form-field {
     margin-left: 0;
   }
 }
-.product-detail .product .actions .form-field label, .product-detail .product .actions .form-field input {
+#product-detail .product .actions .form-field label, #product-detail .product .actions .form-field input {
   font-size: 1.8rem;
   font-weight: 600;
 }
-.product-detail .product .actions .form-field input {
+#product-detail .product .actions .form-field input {
   height: 100%;
   padding: 1.8rem 1rem 1.8rem 2rem;
   margin-left: 1rem;

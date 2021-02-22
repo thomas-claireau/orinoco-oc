@@ -1,4 +1,5 @@
 import "./products.js"
+import "./product.js"
 import SvgFile from "./svg-file.js";
 
 document.addEventListener("DOMContentLoaded", () => {
