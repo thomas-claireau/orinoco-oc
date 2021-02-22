@@ -17,6 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
             header.classList.remove('scrolled')
         }
     })
+
+    // date sur footer
+    const dateFooter = document.getElementById("date-footer")
+    const now = new Date();
+    dateFooter.innerText = now.getFullYear()
 })
 
 // add to cart : attendre le chargement des éléments générés en JS
