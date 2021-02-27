@@ -18,6 +18,7 @@ export default class Cart {
     }
 
     delete(id) {
+        console.log(id);
         // this.ids = this.ids.filter(item => item !== id)
         //
         // this.updateState()

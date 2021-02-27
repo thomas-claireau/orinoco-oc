@@ -13,6 +13,9 @@
     --size: 12rem;
     display: grid;
     grid-template-columns: var(--size) 1fr;
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.3s ease-in-out;
 
     @media screen and (max-width: $break-small) {
       --size: 8rem;
@@ -33,6 +36,13 @@
         background-color: $bleu;
         opacity: .5;
       }
+    }
+
+    &.remove {
+      transform: translateX(-30%);
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+      z-index: -1;
     }
 
     > img {

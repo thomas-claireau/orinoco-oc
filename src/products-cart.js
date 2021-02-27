@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (qtySelectors.length) {
             qtySelectors.forEach(selector => {
-                selector.addEventListener("click", updateQty)
+                selector.addEventListener("click", updateQtyActions)
             })
 
             // remove from cart
@@ -32,8 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
             crossProducts.forEach(cross => {
                 cross.addEventListener("click", removeFromCart)
             })
-
-            observer.disconnect()
         }
     })
 
@@ -42,6 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
         subtree: true
     })
 
+    /**
+     * render product item inside DOM
+     *
+     * @param product
+     * @param qty
+     * @returns {string}
+     */
     function renderProduct(product, qty) {
         const unitPrice = renderPrice(product.price)
         const price = renderPriceByQty(product.price, qty)
@@ -64,8 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <input type="hidden" name="qty" value="${qty}">
                 </div>
                 <div class="price">
-                    <div>Prix unitaire : <strong>${unitPrice}</strong></div>
-                    <div>Prix total : <strong>${price}</strong></div>
+                    <div class="unit">Prix unitaire : <strong>${unitPrice}</strong></div>
+                    <div class="total">Prix total : <strong>${price}</strong></div>
                 </div>
             </div>
         </div>
@@ -73,19 +78,110 @@ document.addEventListener("DOMContentLoaded", () => {
     `
     }
 
-    function updateQty(event) {
+    /**
+     * Controller for update cart
+     *
+     * Fire when minus or plus button are clicked
+     *
+     * @param event
+     */
+    function updateQtyActions(event) {
         if (cart instanceof Cart) {
             const elt = event.currentTarget;
-            const id = elt.closest('.product').dataset.id;
-            const isMinus = elt.classList.contains('minus')
-            const isPlus = elt.classList.contains('plus')
 
-            if (elt.classList.contains("minus")) console.log("minus");
-            if (elt.classList.contains("plus")) console.log("plus");
+            if (!elt) return;
+
+            const product = elt.closest('.product');
+
+            if (!product) return;
+
+            const action = elt.classList[1];
+
+            if (action == "minus" || action == "plus") {
+                updateQty(product, action)
+                updateCounterCart(action)
+                updateTotalPrice(product, action)
+            }
         }
     }
 
-    function removeFromCart(event) {
-        console.log(event);
+    /**
+     * Update quantity inside product target
+     *
+     * @param product
+     * @param action
+     */
+    function updateQty(product, action) {
+        const qty = product.querySelector('.qty .value')
+        const numberQty = Number(qty.innerText)
+
+        if (action == "minus") {
+            if (numberQty <= 1) {
+                removeFromCart(product)
+                return
+            }
+
+            qty.innerText = numberQty - 1;
+        }
+
+        if (action == "plus") {
+            qty.innerText = numberQty + 1;
+        }
+    }
+
+    /**
+     * Update counter cart inside header element
+     * @param action
+     */
+    function updateCounterCart(action) {
+        const counterCart = document.getElementById("counter-cart")
+        const numberCounterCart = Number(counterCart.innerText)
+
+        if (action == "minus") {
+            if (numberCounterCart <= 1) counterCart.remove()
+            
+            counterCart.innerText = numberCounterCart - 1
+        }
+
+        if (action == "plus") {
+            counterCart.innerText = numberCounterCart + 1
+        }
+    }
+
+    /**
+     * Update total price inside product target
+     * @param product
+     * @param action
+     */
+    function updateTotalPrice(product, action) {
+        const unitPrice = product.querySelector(".price .unit strong")
+        const numberUnitPrice = Number(unitPrice.innerText.split(" ")[0])
+        const totalPrice = product.querySelector(".price .total strong")
+        const splitTotalPrice = totalPrice.innerText.split(' ')
+        let numberTotalPrice = Number(splitTotalPrice[0])
+
+        if (numberTotalPrice < numberUnitPrice) return;
+
+        if (action == "plus") {
+            splitTotalPrice[0] = numberTotalPrice + numberUnitPrice
+        }
+
+        if (action == "minus") {
+            splitTotalPrice[0] = numberTotalPrice - numberUnitPrice
+        }
+
+        totalPrice.innerText = splitTotalPrice[0] + " " + splitTotalPrice[1]
+    }
+
+    /**
+     * Remove product from cart and DOM when quantity is less than 1
+     * @param product
+     */
+    function removeFromCart(product) {
+        product.classList.add('remove');
+
+        setTimeout(function () {
+            product.remove()
+        }, 300);
     }
 })
