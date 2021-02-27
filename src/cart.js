@@ -18,9 +18,9 @@ export default class Cart {
     }
 
     delete(id) {
-        this.ids = this.ids.filter(item => item !== id)
-
-        this.updateState()
+        // this.ids = this.ids.filter(item => item !== id)
+        //
+        // this.updateState()
     }
 
     updateState() {

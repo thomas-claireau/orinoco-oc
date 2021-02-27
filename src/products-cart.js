@@ -41,15 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
         childList: true,
         subtree: true
     })
-})
 
+    function renderProduct(product, qty) {
+        const unitPrice = renderPrice(product.price)
+        const price = renderPriceByQty(product.price, qty)
 
-function renderProduct(product, qty) {
-    const unitPrice = renderPrice(product.price)
-    const price = renderPriceByQty(product.price, qty)
-
-    return `
-    <div class="product">
+        return `
+    <div class="product" data-id="${product._id}">
         <img src="${product.imageUrl}"/>
         <div class="infos">
             <div class="top">
@@ -73,12 +71,21 @@ function renderProduct(product, qty) {
         </div>
     </div>
     `
-}
+    }
 
-function updateQty(event) {
-    console.log(event);
-}
+    function updateQty(event) {
+        if (cart instanceof Cart) {
+            const elt = event.currentTarget;
+            const id = elt.closest('.product').dataset.id;
+            const isMinus = elt.classList.contains('minus')
+            const isPlus = elt.classList.contains('plus')
 
-function removeFromCart(event) {
-    console.log(event);
-}
+            if (elt.classList.contains("minus")) console.log("minus");
+            if (elt.classList.contains("plus")) console.log("plus");
+        }
+    }
+
+    function removeFromCart(event) {
+        console.log(event);
+    }
+})
