@@ -18,7 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     // attendre le chargement des éléments générés en JS
-    const observer = new MutationObserver(function () {
+    const observer = new MutationObserver(function (mutation) {
+        if (mutation[0].previousSibling) return
+
         const qtySelectors = document.querySelectorAll('.selector-qty');
 
         if (qtySelectors.length) {
@@ -30,14 +32,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const crossProducts = document.querySelectorAll(".product .close");
 
             crossProducts.forEach(cross => {
-                cross.addEventListener("click", removeFromCart)
+                cross.addEventListener("click", () => {
+                    removeFromCart(cross.closest(".product"), true)
+                })
             })
         }
     })
 
-    observer.observe(document.body, {
+    observer.observe(document.getElementById("products-cart"), {
         childList: true,
-        subtree: true
+        subtree: false
     })
 
     /**
@@ -133,18 +137,31 @@ document.addEventListener("DOMContentLoaded", () => {
      * Update counter cart inside header element
      * @param action
      */
-    function updateCounterCart(action) {
+    function updateCounterCart(action, product = null) {
         const counterCart = document.getElementById("counter-cart")
+
         const numberCounterCart = Number(counterCart.innerText)
 
         if (action == "minus") {
             if (numberCounterCart <= 1) counterCart.remove()
-            
+
             counterCart.innerText = numberCounterCart - 1
         }
 
         if (action == "plus") {
             counterCart.innerText = numberCounterCart + 1
+        }
+
+        if (action == "remove") {
+            const productQty = Number(product.querySelector('.qty .value').innerText)
+            const diff = numberCounterCart - productQty;
+
+            if (diff < 1) {
+                counterCart.remove()
+                return
+            }
+
+            counterCart.innerText = diff
         }
     }
 
@@ -177,11 +194,14 @@ document.addEventListener("DOMContentLoaded", () => {
      * Remove product from cart and DOM when quantity is less than 1
      * @param product
      */
-    function removeFromCart(product) {
+    function removeFromCart(product, remove = false) {
         product.classList.add('remove');
 
         setTimeout(function () {
             product.remove()
+
+            if (remove) updateCounterCart("remove", product)
+
         }, 300);
     }
 })
