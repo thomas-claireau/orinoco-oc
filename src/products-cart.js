@@ -17,12 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 
-    // attendre l'insertion des produits dans le DOM
-    document.onreadystatechange = function () {
-        if (document.readyState === "complete") {
-            // interaction qty
-            const qtySelectors = document.querySelectorAll('.selector-qty');
+    // attendre le chargement des éléments générés en JS
+    const observer = new MutationObserver(function () {
+        const qtySelectors = document.querySelectorAll('.selector-qty');
 
+        if (qtySelectors.length) {
             qtySelectors.forEach(selector => {
                 selector.addEventListener("click", updateQty)
             })
@@ -33,8 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
             crossProducts.forEach(cross => {
                 cross.addEventListener("click", removeFromCart)
             })
+
+            observer.disconnect()
         }
-    }
+    })
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    })
 })
 
 

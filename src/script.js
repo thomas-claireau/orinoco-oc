@@ -23,30 +23,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const dateFooter = document.getElementById("date-footer")
     const now = new Date();
     dateFooter.innerText = now.getFullYear()
-})
 
-// add to cart : attendre le chargement des éléments générés en JS
-document.onreadystatechange = function () {
-    if (document.readyState === "complete") {
+    // add to cart : attendre le chargement des boutons en JS
+    const observer = new MutationObserver(function (mutations) {
         const btnsAtc = document.querySelectorAll('.add-to-cart')
         const counterCart = document.getElementById("counter-cart")
 
-        if (!btnsAtc || !counterCart) return
+        if (btnsAtc.length && counterCart) {
+            const cart = new Cart()
 
-        const cart = new Cart()
+            btnsAtc.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    let qty = btn.parentElement.querySelector("input[name='quantity']");
 
-        btnsAtc.forEach(btn => {
-            btn.addEventListener("click", () => {
-                let qty = btn.parentElement.querySelector("input[name='quantity']");
+                    qty = qty ? Number(qty.value) : 1;
 
-                qty = qty ? Number(qty.value) : 1;
+                    cart.create(btn.dataset.id, qty);
 
-                cart.create(btn.dataset.id, qty);
-
-                // update cart counter
-                let qtyCounterCart = Number(counterCart.innerText);
-                counterCart.innerText = qtyCounterCart + qty;
+                    // update cart counter
+                    let qtyCounterCart = Number(counterCart.innerText);
+                    counterCart.innerText = qtyCounterCart + qty;
+                })
             })
-        })
-    }
-}
+
+            observer.disconnect()
+        }
+    });
+
+    // Start observing
+    observer.observe(document.body, { //document.body is node target to observe
+        childList: true, //This is a must have for the observer with subtree
+        subtree: true //Set to true if changes must also be observed in descendants.
+    });
+})
