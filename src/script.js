@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // date sur footer
     const dateFooter = document.getElementById("date-footer")
     const now = new Date();
-    dateFooter.innerText = now.getFullYear()
+    dateFooter.innerText = String(now.getFullYear())
 
     // add to cart : attendre le chargement des boutons en JS
-    const observer = new MutationObserver(function (mutations) {
+    const observer = new MutationObserver(function () {
         const btnsAtc = document.querySelectorAll('.add-to-cart')
         const counterCart = document.getElementById("counter-cart")
 

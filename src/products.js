@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 productsList.innerHTML += renderProduct(product, index)
             })
         })
-            .catch((error) => rej(error));
+            .catch((error) => console.log(error));
     }
 
     function renderProduct(product, index) {

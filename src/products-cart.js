@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cart = new Cart()
     const ids = cart.renderCart()
 
-    Object.keys(ids).forEach((id, index) => {
+    Object.keys(ids).forEach((id) => {
         fetch(API_URL + "/" + id).then(res => res.json()).then(data => {
             productsCart.innerHTML += renderProduct(data, ids[id]);
         })
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return `
     <div class="product" data-id="${product._id}">
-        <img src="${product.imageUrl}"/>
+        <img src="${product.imageUrl}" alt=""/>
         <div class="infos">
             <div class="top">
                 <h2>${product.name}</h2>
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const action = elt.classList[1];
 
-            if (action == "minus" || action == "plus") {
+            if (action === "minus" || action === "plus") {
                 updateQty(product, action)
                 updateCounterCart(action)
                 updateTotalPrice(product, action)
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const qty = product.querySelector('.qty .value')
         const numberQty = Number(qty.innerText)
 
-        if (action == "minus") {
+        if (action === "minus") {
             if (numberQty <= 1) {
                 removeFromCart(product)
                 return
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
             qty.innerText = numberQty - 1;
         }
 
-        if (action == "plus") {
+        if (action === "plus") {
             qty.innerText = numberQty + 1;
         }
     }
@@ -136,23 +136,24 @@ document.addEventListener("DOMContentLoaded", () => {
     /**
      * Update counter cart inside header element
      * @param action
+     * @param product - optional
      */
     function updateCounterCart(action, product = null) {
         const counterCart = document.getElementById("counter-cart")
 
         const numberCounterCart = Number(counterCart.innerText)
 
-        if (action == "minus") {
+        if (action === "minus") {
             if (numberCounterCart <= 1) counterCart.remove()
 
-            counterCart.innerText = numberCounterCart - 1
+            counterCart.innerText = String(numberCounterCart - 1)
         }
 
-        if (action == "plus") {
-            counterCart.innerText = numberCounterCart + 1
+        if (action === "plus") {
+            counterCart.innerText = String(numberCounterCart + 1)
         }
 
-        if (action == "remove") {
+        if (action === "remove") {
             const productQty = Number(product.querySelector('.qty .value').innerText)
             const diff = numberCounterCart - productQty;
 
@@ -161,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return
             }
 
-            counterCart.innerText = diff
+            counterCart.innerText = String(diff)
         }
     }
 
@@ -179,11 +180,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (numberTotalPrice < numberUnitPrice) return;
 
-        if (action == "plus") {
+        if (action === "plus") {
             splitTotalPrice[0] = numberTotalPrice + numberUnitPrice
         }
 
-        if (action == "minus") {
+        if (action === "minus") {
             splitTotalPrice[0] = numberTotalPrice - numberUnitPrice
         }
 
@@ -193,6 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /**
      * Remove product from cart and DOM when quantity is less than 1
      * @param product
+     * @param remove - optional
      */
     function removeFromCart(product, remove = false) {
         product.classList.add('remove');

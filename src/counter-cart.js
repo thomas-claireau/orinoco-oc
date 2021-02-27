@@ -5,5 +5,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const ids = JSON.parse(localStorage.getItem("ids")) || [];
 
-    counter.innerText = ids.length;
+    counter.innerText = String(ids.length);
 })
