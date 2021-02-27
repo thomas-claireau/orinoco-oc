@@ -1,6 +1,6 @@
 import {renderPrice} from "./functions.js";
 
-const API_URL = "http://localhost:3000/api/cameras";
+const API_URL = "https://p5-orinoco-backend.herokuapp.com/api/cameras";
 
 document.addEventListener("DOMContentLoaded", () => {
     const productsList = document.getElementById("products-list");

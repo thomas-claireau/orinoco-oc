@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!productsCart) return
 
-    const API_URL = "http://localhost:3000/api/cameras";
+    const API_URL = "https://p5-orinoco-backend.herokuapp.com/api/cameras";
 
     const cart = new Cart()
     const ids = cart.renderCart()
@@ -20,7 +20,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // attendre l'insertion des produits dans le DOM
     document.onreadystatechange = function () {
         if (document.readyState === "complete") {
-            
+            // interaction qty
+            const qtySelectors = document.querySelectorAll('.selector-qty');
+
+            qtySelectors.forEach(selector => {
+                selector.addEventListener("click", updateQty)
+            })
+
+            // remove from cart
+            const crossProducts = document.querySelectorAll(".product .close");
+
+            crossProducts.forEach(cross => {
+                cross.addEventListener("click", removeFromCart)
+            })
         }
     }
 })
@@ -42,9 +54,9 @@ function renderProduct(product, qty) {
             </div>
             <div class="bottom">
                 <div class="qty">
-                    <span class="minus"></span>
+                    <span class="selector-qty minus"></span>
                     <span class="value">${qty}</span>
-                    <span class="plus"></span>
+                    <span class="selector-qty plus"></span>
                     <input type="hidden" name="qty" value="${qty}">
                 </div>
                 <div class="price">
@@ -55,4 +67,12 @@ function renderProduct(product, qty) {
         </div>
     </div>
     `
+}
+
+function updateQty(event) {
+    console.log(event);
+}
+
+function removeFromCart(event) {
+    console.log(event);
 }

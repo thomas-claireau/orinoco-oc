@@ -1,6 +1,6 @@
 import {$_GET, renderPrice} from "./functions.js";
 
-const API_URL = `http://localhost:3000/api/cameras/${$_GET('id')}`;
+const API_URL = `https://p5-orinoco-backend.herokuapp.com/api/cameras/${$_GET('id')}`;
 
 document.addEventListener("DOMContentLoaded", () => {
     const productDetail = document.getElementById("product-detail");
