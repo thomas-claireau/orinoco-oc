@@ -131,6 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (action === "plus") {
             qty.innerText = numberQty + 1;
         }
+
+        cart.delete(product.dataset.id, true)
     }
 
     /**
@@ -199,10 +201,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function removeFromCart(product, remove = false) {
         product.classList.add('remove');
 
+
         setTimeout(function () {
             product.remove()
+            cart.delete(product.dataset.id)
 
-            if (remove) updateCounterCart("remove", product)
+            if (remove) {
+                updateCounterCart("remove", product)
+
+            }
 
         }, 300);
     }

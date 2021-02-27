@@ -17,11 +17,14 @@ export default class Cart {
         this.updateState()
     }
 
-    delete(id) {
-        console.log(id);
-        // this.ids = this.ids.filter(item => item !== id)
-        //
-        // this.updateState()
+    delete(id, decrement = false) {
+        if (decrement) {
+            this.ids.splice(this.ids.findIndex(item => item === id), 1)
+        } else {
+            this.ids = this.ids.filter(item => item !== id)
+        }
+
+        this.updateState()
     }
 
     updateState() {
