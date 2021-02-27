@@ -9,6 +9,21 @@
     max-width: 80rem;
   }
 
+  > .infos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    > h2 {
+      font-size: 4rem;
+
+      @media screen and (max-width: $break-tablet) {
+        font-size: 2rem;
+      }
+    }
+  }
+
   .product {
     --size: 12rem;
     display: grid;

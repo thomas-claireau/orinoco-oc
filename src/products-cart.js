@@ -10,8 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const cart = new Cart()
     const ids = cart.renderCart()
+    const arrayIds = Object.keys(ids)
 
-    Object.keys(ids).forEach((id) => {
+    if (!arrayIds.length) {
+        displayInfos()
+        return
+    }
+
+    arrayIds.forEach((id) => {
         fetch(API_URL + "/" + id).then(res => res.json()).then(data => {
             productsCart.innerHTML += renderProduct(data, ids[id]);
         })
@@ -208,9 +214,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (remove) {
                 updateCounterCart("remove", product)
-
             }
 
+            if (!productsCart.children.length) displayInfos()
+
         }, 300);
+    }
+
+    function displayInfos() {
+        productsCart.innerHTML = `<div class="infos">
+            <h2>Aucun produit dans le panier</h2>
+            <a href="/orinoco-oc" class="button">Continuer mes achats</a>
+        </div>`
     }
 })
