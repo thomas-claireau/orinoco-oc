@@ -86,8 +86,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(checkout)
-            }).then(res => res.json()).then(() => {
-                checkoutForm.submit()
+            }).then(res => res.json()).then((data) => {
+
+                const inputTotalPrice = checkoutForm.querySelector("input[name='totalPrice']")
+                const inputIdOrder = checkoutForm.querySelector("input[name='idOrder']")
+
+                if (inputTotalPrice && inputIdOrder) {
+                    inputTotalPrice.value = renderTotalPrice()
+                    inputIdOrder.value = data.orderId;
+                    
+                    checkoutForm.submit()
+                }
             })
         })
     }
@@ -262,6 +271,17 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!productsCart.children.length) displayInfos()
 
         }, 300);
+    }
+
+    function renderTotalPrice() {
+        const prices = document.querySelectorAll('.price .total strong');
+        let sum = 0;
+
+        prices.forEach(price => {
+            sum += Number(price.textContent.split(" ")[0])
+        })
+
+        return String(sum + " €")
     }
 
     function displayInfos() {

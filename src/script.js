@@ -1,5 +1,6 @@
 import "./products.js"
 import "./products-cart.js"
+import "./confirmation.js"
 import "./product.js"
 import "./counter-cart.js"
 import SvgFile from "./svg-file.js";
