@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // checkout submit form
         const checkoutForm = document.getElementById("checkout")
 
+        // interaction focus input
         checkoutForm.querySelectorAll("input").forEach(input => {
             input.addEventListener("focus", () => {
                 input.classList.add("focus")
@@ -72,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         })
 
+        // submit checkout form
         checkoutForm.addEventListener("submit", (e) => {
             e.preventDefault()
             const contact = new Contact(new FormData(checkoutForm))
