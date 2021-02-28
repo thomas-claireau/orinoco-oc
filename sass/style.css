@@ -543,12 +543,12 @@ footer > .container {
 }
 
 #products-cart {
-    padding: 8rem 0;
+    padding: 8rem 0 0 0;
 }
 
 @media screen and (max-width: 768px) {
     #products-cart {
-        padding: 6rem 2rem;
+        padding: 6rem 2rem 0 2rem;
     }
 }
 
@@ -723,6 +723,103 @@ footer > .container {
         margin-left: 0;
         margin-top: 0.5rem;
     }
+}
+
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem 0;
+}
+
+.checkout-container.container {
+    max-width: 80rem;
+}
+
+@media screen and (min-width: 769px) {
+    .checkout-container.container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.checkout-container form#checkout {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.checkout-container .form-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+}
+
+.checkout-container .form-row:not(:first-child) {
+    margin-top: 2rem;
+}
+
+.checkout-container .form-row.duo {
+    grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 768px) {
+    .checkout-container .form-row.duo {
+        grid-template-columns: 1fr;
+    }
+}
+
+.checkout-container .form-row .form-field {
+    width: 100%;
+    min-height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    border-radius: 0.5rem;
+    border: 1px solid gainsboro;
+    outline: 0;
+}
+
+.checkout-container .form-row .form-field label {
+    width: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    color: #101010;
+    transition: all 0.3s ease-in-out;
+}
+
+.checkout-container .form-row .form-field input {
+    width: 100%;
+    height: 100%;
+    padding: 1rem 1rem 0 1rem;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    outline: 0;
+    font-size: 1.8rem;
+}
+
+.checkout-container .form-row .form-field input::placeholder {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.checkout-container .form-row .form-field input:focus + label, .checkout-container .form-row .form-field input.focus + label {
+    top: 1.3rem;
+    left: 1rem;
+    color: #3d4788;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.checkout-container button[type=submit] {
+    margin-top: 4rem;
 }
 
 .button {

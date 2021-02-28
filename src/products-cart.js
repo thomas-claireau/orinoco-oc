@@ -4,6 +4,7 @@ import Checkout from './checkout.js'
 import {renderPrice, renderPriceByQty} from "./functions.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+    // cart step
     const productsCart = document.getElementById("products-cart")
 
     if (!productsCart) return
@@ -54,29 +55,40 @@ document.addEventListener("DOMContentLoaded", () => {
         subtree: false
     })
 
-    // checkout submit form
-    const checkoutForm = document.getElementById("checkout")
+    // checkout step
+    const checkoutContainer = document.querySelector(".checkout-container")
 
-    checkoutForm.addEventListener("submit", (e) => {
-        e.preventDefault()
-        const contact = new Contact(new FormData(checkoutForm))
-        const checkout = new Checkout(contact, arrayIds)
+    if (checkoutContainer) {
+        // checkout submit form
+        const checkoutForm = document.getElementById("checkout")
 
-        console.log(JSON.stringify(checkout));
+        checkoutForm.querySelectorAll("input").forEach(input => {
+            input.addEventListener("focus", () => {
+                input.classList.add("focus")
+            })
 
-        fetch(API_POST_URL, {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(checkout)
-        }).then(res => {
-            if (res.status === 201) {
-
-            }
+            input.addEventListener("blur", () => {
+                if (!input.value) input.classList.remove('focus')
+            })
         })
-    })
+
+        checkoutForm.addEventListener("submit", (e) => {
+            e.preventDefault()
+            const contact = new Contact(new FormData(checkoutForm))
+            const checkout = new Checkout(contact, arrayIds)
+
+            fetch(API_POST_URL, {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(checkout)
+            }).then(res => res.json()).then(() => {
+                checkoutForm.submit()
+            })
+        })
+    }
 
 
     /**
@@ -256,6 +268,4 @@ document.addEventListener("DOMContentLoaded", () => {
             <a href="/orinoco-oc" class="button">Continuer mes achats</a>
         </div>`
     }
-
-    function displayConfirmation()
 })

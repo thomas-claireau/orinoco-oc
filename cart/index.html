@@ -27,39 +27,35 @@
     <section id="products-cart" class="container"></section>
 
     <section class="checkout-container container">
-        <form id="checkout">
-            <div class="form-row">
+        <form id="checkout" method="GET" action="/orinoco-oc/confirmation/index.html">
+            <div class="form-row duo">
                 <div class="form-field">
-                    <label for="firstName">Prénom</label>
                     <input id="firstName" type="text" name="firstName" required placeholder="John">
+                    <label for="firstName">Prénom</label>
                 </div>
                 <div class="form-field">
-                    <label for="lastName">Nom</label>
                     <input id="lastName" type="text" name="lastName" required placeholder="Doe">
+                    <label for="lastName">Nom</label>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-field">
-                    <label for="email">Email</label>
                     <input id="email" type="email" name="email" required placeholder="john.doe@gmail.com">
+                    <label for="email">Email</label>
                 </div>
             </div>
-            <div class="form-row">
+            <div class="form-row duo">
                 <div class="form-field">
-                    <label for="address">Adresse</label>
                     <input id="address" type="text" name="address" required placeholder="90210 Melrose Avenue">
+                    <label for="address">Adresse</label>
                 </div>
                 <div class="form-field">
-                    <label for="city">Ville</label>
                     <input id="city" type="text" name="city" required placeholder="Los Angeles">
+                    <label for="city">Ville</label>
                 </div>
             </div>
-        </form>
-        <div class="resume">
-            <h3>Prix total</h3>
-            <div class="total-price"></div>
             <button class="button" type="submit" form="checkout">Je commande</button>
-        </div>
+        </form>
     </section>
 
     <footer>
