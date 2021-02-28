@@ -6,6 +6,7 @@ import {renderPrice, renderPriceByQty} from "./functions.js";
 document.addEventListener("DOMContentLoaded", () => {
     // cart step
     const productsCart = document.getElementById("products-cart")
+    const checkoutForm = document.getElementById("checkout")
 
     if (!productsCart) return
 
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const ids = cart.renderCart()
     const arrayIds = Object.keys(ids)
 
+    if (!arrayIds.length) checkoutForm.remove()
 
     if (!arrayIds.length) {
         displayInfos()
@@ -55,51 +57,44 @@ document.addEventListener("DOMContentLoaded", () => {
         subtree: false
     })
 
-    // checkout step
-    const checkoutContainer = document.querySelector(".checkout-container")
-
-    if (checkoutContainer) {
-        // checkout submit form
-        const checkoutForm = document.getElementById("checkout")
-
-        // interaction focus input
-        checkoutForm.querySelectorAll("input").forEach(input => {
-            input.addEventListener("focus", () => {
-                input.classList.add("focus")
-            })
-
-            input.addEventListener("blur", () => {
-                if (!input.value) input.classList.remove('focus')
-            })
+    // interaction focus input
+    checkoutForm.querySelectorAll("input").forEach(input => {
+        input.addEventListener("focus", () => {
+            input.classList.add("focus")
         })
 
-        // submit checkout form
-        checkoutForm.addEventListener("submit", (e) => {
-            e.preventDefault()
-            const contact = new Contact(new FormData(checkoutForm))
-            const checkout = new Checkout(contact, arrayIds)
-
-            fetch(API_POST_URL, {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(checkout)
-            }).then(res => res.json()).then((data) => {
-
-                const inputTotalPrice = checkoutForm.querySelector("input[name='totalPrice']")
-                const inputIdOrder = checkoutForm.querySelector("input[name='idOrder']")
-
-                if (inputTotalPrice && inputIdOrder) {
-                    inputTotalPrice.value = renderTotalPrice()
-                    inputIdOrder.value = data.orderId;
-                    
-                    checkoutForm.submit()
-                }
-            })
+        input.addEventListener("blur", () => {
+            if (!input.value) input.classList.remove('focus')
         })
-    }
+    })
+
+    // submit checkout form
+    checkoutForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const contact = new Contact(new FormData(checkoutForm))
+        const checkout = new Checkout(contact, arrayIds)
+
+        fetch(API_POST_URL, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(checkout)
+        }).then(res => res.json()).then((data) => {
+
+            const inputTotalPrice = checkoutForm.querySelector("input[name='totalPrice']")
+            const inputIdOrder = checkoutForm.querySelector("input[name='idOrder']")
+
+            if (inputTotalPrice && inputIdOrder) {
+                inputTotalPrice.value = renderTotalPrice()
+                inputIdOrder.value = data.orderId;
+
+                cart.clear()
+                checkoutForm.submit()
+            }
+        })
+    })
 
 
     /**
@@ -289,5 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h2>Aucun produit dans le panier</h2>
             <a href="/orinoco-oc" class="button">Continuer mes achats</a>
         </div>`
+
+        checkoutForm.remove()
     }
 })

@@ -27,6 +27,11 @@ export default class Cart {
         this.updateState()
     }
 
+    clear() {
+        this.ids = []
+        this.updateState()
+    }
+
     updateState() {
         if (this.ids.length === 0) {
             localStorage.clear()
