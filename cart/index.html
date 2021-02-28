@@ -26,6 +26,42 @@
 
     <section id="products-cart" class="container"></section>
 
+    <section class="checkout-container container">
+        <form id="checkout">
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="firstName">Prénom</label>
+                    <input id="firstName" type="text" name="firstName" required placeholder="John">
+                </div>
+                <div class="form-field">
+                    <label for="lastName">Nom</label>
+                    <input id="lastName" type="text" name="lastName" required placeholder="Doe">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" name="email" required placeholder="john.doe@gmail.com">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="address">Adresse</label>
+                    <input id="address" type="text" name="address" required placeholder="90210 Melrose Avenue">
+                </div>
+                <div class="form-field">
+                    <label for="city">Ville</label>
+                    <input id="city" type="text" name="city" required placeholder="Los Angeles">
+                </div>
+            </div>
+        </form>
+        <div class="resume">
+            <h3>Prix total</h3>
+            <div class="total-price"></div>
+            <button class="button" type="submit" form="checkout">Je commande</button>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             ©

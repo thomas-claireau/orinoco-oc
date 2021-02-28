@@ -1,4 +1,6 @@
 import Cart from "./cart.js";
+import Contact from './contact.js'
+import Checkout from './checkout.js'
 import {renderPrice, renderPriceByQty} from "./functions.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,10 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!productsCart) return
 
     const API_URL = "https://p5-orinoco-backend.herokuapp.com/api/cameras";
+    const API_POST_URL = "http://localhost:3000/api/cameras/order";
 
     const cart = new Cart()
     const ids = cart.renderCart()
     const arrayIds = Object.keys(ids)
+
 
     if (!arrayIds.length) {
         displayInfos()
@@ -49,6 +53,31 @@ document.addEventListener("DOMContentLoaded", () => {
         childList: true,
         subtree: false
     })
+
+    // checkout submit form
+    const checkoutForm = document.getElementById("checkout")
+
+    checkoutForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const contact = new Contact(new FormData(checkoutForm))
+        const checkout = new Checkout(contact, arrayIds)
+
+        console.log(JSON.stringify(checkout));
+
+        fetch(API_POST_URL, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(checkout)
+        }).then(res => {
+            if (res.status === 201) {
+
+            }
+        })
+    })
+
 
     /**
      * render product item inside DOM
@@ -227,4 +256,6 @@ document.addEventListener("DOMContentLoaded", () => {
             <a href="/orinoco-oc" class="button">Continuer mes achats</a>
         </div>`
     }
+
+    function displayConfirmation()
 })
