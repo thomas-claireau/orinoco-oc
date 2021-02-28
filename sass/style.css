@@ -698,6 +698,19 @@ footer > .container {
   margin-top: 4rem;
 }
 
+.page-confirmation .confirmation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2rem;
+}
+@media screen and (max-width: 768px) {
+  .page-confirmation .confirmation {
+    font-size: 1.6rem;
+  }
+}
+
 .button {
   width: fit-content;
   display: flex;

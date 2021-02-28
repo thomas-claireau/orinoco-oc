@@ -1,3 +1,13 @@
 .page-confirmation {
+  .confirmation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2rem;
 
+    @media screen and (max-width: $break-tablet) {
+      font-size: 1.6rem;
+    }
+  }
 }
