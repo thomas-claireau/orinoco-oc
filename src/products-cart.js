@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!productsCart) return
 
     const API_URL = "https://p5-orinoco-backend.herokuapp.com/api/cameras";
-    const API_POST_URL = "http://localhost:3000/api/cameras/order";
+    const API_POST_URL = "https://p5-orinoco-backend.herokuapp.com/api/cameras/order";
 
     const cart = new Cart()
     const ids = cart.renderCart()
@@ -90,8 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 inputTotalPrice.value = renderTotalPrice()
                 inputIdOrder.value = data.orderId;
 
-                cart.clear()
-                checkoutForm.submit()
+
+                // cart.clear()
+                // checkoutForm.submit()
             }
         })
     })

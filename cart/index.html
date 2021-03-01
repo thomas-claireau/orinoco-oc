@@ -30,11 +30,12 @@
         <form id="checkout" method="GET" action="/orinoco-oc/confirmation/index.html">
             <div class="form-row duo">
                 <div class="form-field">
-                    <input id="firstName" type="text" name="firstName" required placeholder="John">
+                    <input id="firstName" type="text" name="firstName" required placeholder="John"
+                           pattern="^[^\\\/&]*$">
                     <label for="firstName">Prénom</label>
                 </div>
                 <div class="form-field">
-                    <input id="lastName" type="text" name="lastName" required placeholder="Doe">
+                    <input id="lastName" type="text" name="lastName" required placeholder="Doe" pattern="^[^\\\/&]*$">
                     <label for="lastName">Nom</label>
                 </div>
             </div>
@@ -46,11 +47,12 @@
             </div>
             <div class="form-row duo">
                 <div class="form-field">
-                    <input id="address" type="text" name="address" required placeholder="90210 Melrose Avenue">
+                    <input id="address" type="text" name="address" required placeholder="90210 Melrose Avenue"
+                           pattern="^[^\\\/&]*$">
                     <label for="address">Adresse</label>
                 </div>
                 <div class="form-field">
-                    <input id="city" type="text" name="city" required placeholder="Los Angeles">
+                    <input id="city" type="text" name="city" required placeholder="Los Angeles" pattern="^[^\\\/&]*$">
                     <label for="city">Ville</label>
                 </div>
             </div>
