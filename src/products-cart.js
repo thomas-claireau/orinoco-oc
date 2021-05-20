@@ -1,115 +1,121 @@
 import Cart from "./cart.js";
-import Contact from './contact.js'
-import Checkout from './checkout.js'
-import {renderPrice, renderPriceByQty} from "./functions.js";
+import Contact from "./contact.js";
+import Checkout from "./checkout.js";
+import { renderPrice, renderPriceByQty } from "./functions.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    // cart step
-    const productsCart = document.getElementById("products-cart")
-    const checkoutForm = document.getElementById("checkout")
+  // cart step
+  const productsCart = document.getElementById("products-cart");
+  const checkoutForm = document.getElementById("checkout");
 
-    if (!productsCart) return
+  if (!productsCart) return;
 
-    const API_URL = "https://p5-orinoco-backend.herokuapp.com/api/cameras";
-    const API_POST_URL = "https://p5-orinoco-backend.herokuapp.com/api/cameras/order";
+  const API_URL = "https://p5-orinoco-backend.herokuapp.com/api/cameras";
+  const API_POST_URL =
+    "https://p5-orinoco-backend.herokuapp.com/api/cameras/order";
 
-    const cart = new Cart()
-    const ids = cart.renderCart()
-    const arrayIds = Object.keys(ids)
+  const cart = new Cart();
+  const ids = cart.renderCart();
+  const arrayIds = Object.keys(ids);
 
-    if (!arrayIds.length) checkoutForm.remove()
+  if (!arrayIds.length) checkoutForm.remove();
 
-    if (!arrayIds.length) {
-        displayInfos()
-        return
+  if (!arrayIds.length) {
+    displayInfos();
+    return;
+  }
+
+  arrayIds.forEach((id) => {
+    fetch(API_URL + "/" + id)
+      .then((res) => res.json())
+      .then((data) => {
+        productsCart.innerHTML += renderProduct(data, ids[id]);
+      });
+  });
+
+  // attendre le chargement des éléments générés en JS
+  const observer = new MutationObserver(function (mutation) {
+    if (mutation[0].previousSibling) return;
+
+    const qtySelectors = document.querySelectorAll(".selector-qty");
+
+    if (qtySelectors.length) {
+      qtySelectors.forEach((selector) => {
+        selector.addEventListener("click", updateQtyActions);
+      });
+
+      // remove from cart
+      const crossProducts = document.querySelectorAll(".product .close");
+
+      crossProducts.forEach((cross) => {
+        cross.addEventListener("click", () => {
+          removeFromCart(cross.closest(".product"), true);
+        });
+      });
     }
+  });
 
-    arrayIds.forEach((id) => {
-        fetch(API_URL + "/" + id).then(res => res.json()).then(data => {
-            productsCart.innerHTML += renderProduct(data, ids[id]);
-        })
+  observer.observe(document.getElementById("products-cart"), {
+    childList: true,
+    subtree: false,
+  });
+
+  // interaction focus input
+  checkoutForm.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("focus", () => {
+      input.classList.add("focus");
+    });
+
+    input.addEventListener("blur", () => {
+      if (!input.value) input.classList.remove("focus");
+    });
+  });
+
+  // submit checkout form
+  checkoutForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const contact = new Contact(new FormData(checkoutForm));
+    const checkout = new Checkout(contact, arrayIds);
+
+    fetch(API_POST_URL, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(checkout),
     })
+      .then((res) => res.json())
+      .then((data) => {
+        const inputTotalPrice = checkoutForm.querySelector(
+          "input[name='totalPrice']"
+        );
+        const inputIdOrder = checkoutForm.querySelector(
+          "input[name='idOrder']"
+        );
 
-    // attendre le chargement des éléments générés en JS
-    const observer = new MutationObserver(function (mutation) {
-        if (mutation[0].previousSibling) return
+        if (inputTotalPrice && inputIdOrder) {
+          inputTotalPrice.value = renderTotalPrice();
+          inputIdOrder.value = data.orderId;
 
-        const qtySelectors = document.querySelectorAll('.selector-qty');
-
-        if (qtySelectors.length) {
-            qtySelectors.forEach(selector => {
-                selector.addEventListener("click", updateQtyActions)
-            })
-
-            // remove from cart
-            const crossProducts = document.querySelectorAll(".product .close");
-
-            crossProducts.forEach(cross => {
-                cross.addEventListener("click", () => {
-                    removeFromCart(cross.closest(".product"), true)
-                })
-            })
+          cart.clear();
+          checkoutForm.submit();
         }
-    })
+      });
+  });
 
-    observer.observe(document.getElementById("products-cart"), {
-        childList: true,
-        subtree: false
-    })
+  /**
+   * render product item inside DOM
+   *
+   * @param product
+   * @param qty
+   * @returns {string}
+   */
+  function renderProduct(product, qty) {
+    const unitPrice = renderPrice(product.price);
+    const price = renderPriceByQty(product.price, qty);
 
-    // interaction focus input
-    checkoutForm.querySelectorAll("input").forEach(input => {
-        input.addEventListener("focus", () => {
-            input.classList.add("focus")
-        })
-
-        input.addEventListener("blur", () => {
-            if (!input.value) input.classList.remove('focus')
-        })
-    })
-
-    // submit checkout form
-    checkoutForm.addEventListener("submit", (e) => {
-        e.preventDefault()
-        const contact = new Contact(new FormData(checkoutForm))
-        const checkout = new Checkout(contact, arrayIds)
-
-        fetch(API_POST_URL, {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(checkout)
-        }).then(res => res.json()).then((data) => {
-
-            const inputTotalPrice = checkoutForm.querySelector("input[name='totalPrice']")
-            const inputIdOrder = checkoutForm.querySelector("input[name='idOrder']")
-
-            if (inputTotalPrice && inputIdOrder) {
-                inputTotalPrice.value = renderTotalPrice()
-                inputIdOrder.value = data.orderId;
-
-
-                // cart.clear()
-                // checkoutForm.submit()
-            }
-        })
-    })
-
-
-    /**
-     * render product item inside DOM
-     *
-     * @param product
-     * @param qty
-     * @returns {string}
-     */
-    function renderProduct(product, qty) {
-        const unitPrice = renderPrice(product.price)
-        const price = renderPriceByQty(product.price, qty)
-
-        return `
+    return `
     <div class="product" data-id="${product._id}">
         <img src="${product.imageUrl}" alt=""/>
         <div class="infos">
@@ -133,159 +139,157 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
     </div>
-    `
+    `;
+  }
+
+  /**
+   * Controller for update cart
+   *
+   * Fire when minus or plus button are clicked
+   *
+   * @param event
+   */
+  function updateQtyActions(event) {
+    if (cart instanceof Cart) {
+      const elt = event.currentTarget;
+
+      if (!elt) return;
+
+      const product = elt.closest(".product");
+
+      if (!product) return;
+
+      const action = elt.classList[1];
+
+      if (action === "minus" || action === "plus") {
+        updateQty(product, action);
+        updateCounterCart(action);
+        updateTotalPrice(product, action);
+      }
+    }
+  }
+
+  /**
+   * Update quantity inside product target
+   *
+   * @param product
+   * @param action
+   */
+  function updateQty(product, action) {
+    const qty = product.querySelector(".qty .value");
+    const numberQty = Number(qty.innerText);
+
+    if (action === "minus") {
+      if (numberQty <= 1) {
+        removeFromCart(product);
+        return;
+      }
+
+      qty.innerText = numberQty - 1;
     }
 
-    /**
-     * Controller for update cart
-     *
-     * Fire when minus or plus button are clicked
-     *
-     * @param event
-     */
-    function updateQtyActions(event) {
-        if (cart instanceof Cart) {
-            const elt = event.currentTarget;
-
-            if (!elt) return;
-
-            const product = elt.closest('.product');
-
-            if (!product) return;
-
-            const action = elt.classList[1];
-
-            if (action === "minus" || action === "plus") {
-                updateQty(product, action)
-                updateCounterCart(action)
-                updateTotalPrice(product, action)
-            }
-        }
+    if (action === "plus") {
+      qty.innerText = numberQty + 1;
     }
 
-    /**
-     * Update quantity inside product target
-     *
-     * @param product
-     * @param action
-     */
-    function updateQty(product, action) {
-        const qty = product.querySelector('.qty .value')
-        const numberQty = Number(qty.innerText)
+    cart.delete(product.dataset.id, true);
+  }
 
-        if (action === "minus") {
-            if (numberQty <= 1) {
-                removeFromCart(product)
-                return
-            }
+  /**
+   * Update counter cart inside header element
+   * @param action
+   * @param product - optional
+   */
+  function updateCounterCart(action, product = null) {
+    const counterCart = document.getElementById("counter-cart");
 
-            qty.innerText = numberQty - 1;
-        }
+    const numberCounterCart = Number(counterCart.innerText);
 
-        if (action === "plus") {
-            qty.innerText = numberQty + 1;
-        }
+    if (action === "minus") {
+      if (numberCounterCart <= 1) counterCart.remove();
 
-        cart.delete(product.dataset.id, true)
+      counterCart.innerText = String(numberCounterCart - 1);
     }
 
-    /**
-     * Update counter cart inside header element
-     * @param action
-     * @param product - optional
-     */
-    function updateCounterCart(action, product = null) {
-        const counterCart = document.getElementById("counter-cart")
-
-        const numberCounterCart = Number(counterCart.innerText)
-
-        if (action === "minus") {
-            if (numberCounterCart <= 1) counterCart.remove()
-
-            counterCart.innerText = String(numberCounterCart - 1)
-        }
-
-        if (action === "plus") {
-            counterCart.innerText = String(numberCounterCart + 1)
-        }
-
-        if (action === "remove") {
-            const productQty = Number(product.querySelector('.qty .value').innerText)
-            const diff = numberCounterCart - productQty;
-
-            if (diff < 1) {
-                counterCart.remove()
-                return
-            }
-
-            counterCart.innerText = String(diff)
-        }
+    if (action === "plus") {
+      counterCart.innerText = String(numberCounterCart + 1);
     }
 
-    /**
-     * Update total price inside product target
-     * @param product
-     * @param action
-     */
-    function updateTotalPrice(product, action) {
-        const unitPrice = product.querySelector(".price .unit strong")
-        const numberUnitPrice = Number(unitPrice.innerText.split(" ")[0])
-        const totalPrice = product.querySelector(".price .total strong")
-        const splitTotalPrice = totalPrice.innerText.split(' ')
-        let numberTotalPrice = Number(splitTotalPrice[0])
+    if (action === "remove") {
+      const productQty = Number(product.querySelector(".qty .value").innerText);
+      const diff = numberCounterCart - productQty;
 
-        if (numberTotalPrice < numberUnitPrice) return;
+      if (diff < 1) {
+        counterCart.remove();
+        return;
+      }
 
-        if (action === "plus") {
-            splitTotalPrice[0] = numberTotalPrice + numberUnitPrice
-        }
+      counterCart.innerText = String(diff);
+    }
+  }
 
-        if (action === "minus") {
-            splitTotalPrice[0] = numberTotalPrice - numberUnitPrice
-        }
+  /**
+   * Update total price inside product target
+   * @param product
+   * @param action
+   */
+  function updateTotalPrice(product, action) {
+    const unitPrice = product.querySelector(".price .unit strong");
+    const numberUnitPrice = Number(unitPrice.innerText.split(" ")[0]);
+    const totalPrice = product.querySelector(".price .total strong");
+    const splitTotalPrice = totalPrice.innerText.split(" ");
+    let numberTotalPrice = Number(splitTotalPrice[0]);
 
-        totalPrice.innerText = splitTotalPrice[0] + " " + splitTotalPrice[1]
+    if (numberTotalPrice < numberUnitPrice) return;
+
+    if (action === "plus") {
+      splitTotalPrice[0] = numberTotalPrice + numberUnitPrice;
     }
 
-    /**
-     * Remove product from cart and DOM when quantity is less than 1
-     * @param product
-     * @param remove - optional
-     */
-    function removeFromCart(product, remove = false) {
-        product.classList.add('remove');
-
-
-        setTimeout(function () {
-            product.remove()
-            cart.delete(product.dataset.id)
-
-            if (remove) {
-                updateCounterCart("remove", product)
-            }
-
-            if (!productsCart.children.length) displayInfos()
-
-        }, 300);
+    if (action === "minus") {
+      splitTotalPrice[0] = numberTotalPrice - numberUnitPrice;
     }
 
-    function renderTotalPrice() {
-        const prices = document.querySelectorAll('.price .total strong');
-        let sum = 0;
+    totalPrice.innerText = splitTotalPrice[0] + " " + splitTotalPrice[1];
+  }
 
-        prices.forEach(price => {
-            sum += Number(price.textContent.split(" ")[0])
-        })
+  /**
+   * Remove product from cart and DOM when quantity is less than 1
+   * @param product
+   * @param remove - optional
+   */
+  function removeFromCart(product, remove = false) {
+    product.classList.add("remove");
 
-        return String(sum + " €")
-    }
+    setTimeout(function () {
+      product.remove();
+      cart.delete(product.dataset.id);
 
-    function displayInfos() {
-        productsCart.innerHTML = `<div class="infos">
+      if (remove) {
+        updateCounterCart("remove", product);
+      }
+
+      if (!productsCart.children.length) displayInfos();
+    }, 300);
+  }
+
+  function renderTotalPrice() {
+    const prices = document.querySelectorAll(".price .total strong");
+    let sum = 0;
+
+    prices.forEach((price) => {
+      sum += Number(price.textContent.split(" ")[0]);
+    });
+
+    return String(sum + " €");
+  }
+
+  function displayInfos() {
+    productsCart.innerHTML = `<div class="infos">
             <h2>Aucun produit dans le panier</h2>
-            <a href="/orinoco-oc" class="button">Continuer mes achats</a>
-        </div>`
+            <a href="/" class="button">Continuer mes achats</a>
+        </div>`;
 
-        checkoutForm.remove()
-    }
-})
+    checkoutForm.remove();
+  }
+});

@@ -1,76 +1,113 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Orinoco</title>
-    <link rel="stylesheet" href="../sass/style.css">
-</head>
-<body class="page-cart">
-<header>
-    <nav class="container">
-        <a href="/orinoco-oc">
-            <h1>Orinoco</h1>
+    <link rel="stylesheet" href="../sass/style.css" />
+  </head>
+  <body class="page-cart">
+    <header>
+      <nav class="container">
+        <a href="/">
+          <h1>Orinoco</h1>
         </a>
-        <a href="/orinoco-oc/cart" class="panier">
-            <span id="counter-cart"></span>
-            <svg-file file="../assets/img/shopping-cart.svg"></svg-file>
+        <a href="../cart" class="panier">
+          <span id="counter-cart"></span>
+          <svg-file file="../assets/img/shopping-cart.svg"></svg-file>
         </a>
-    </nav>
-</header>
+      </nav>
+    </header>
 
-<section class="page-body">
-    <section class="hero" style="background-image: url(../assets/img/bg-header.jpg)">
+    <section class="page-body">
+      <section
+        class="hero"
+        style="background-image: url(../assets/img/bg-header.jpg)"
+      >
         <h2>Panier - Caméras vintages</h2>
-    </section>
+      </section>
 
-    <section id="products-cart" class="container"></section>
+      <section id="products-cart" class="container"></section>
 
-    <section class="checkout-container container">
-        <form id="checkout" method="GET" action="/orinoco-oc/confirmation/index.html">
-            <div class="form-row duo">
-                <div class="form-field">
-                    <input id="firstName" type="text" name="firstName" required placeholder="John"
-                           pattern="^[^\\\/&]*$">
-                    <label for="firstName">Prénom</label>
-                </div>
-                <div class="form-field">
-                    <input id="lastName" type="text" name="lastName" required placeholder="Doe" pattern="^[^\\\/&]*$">
-                    <label for="lastName">Nom</label>
-                </div>
+      <section class="checkout-container container">
+        <form id="checkout" method="GET" action="../confirmation/">
+          <div class="form-row duo">
+            <div class="form-field">
+              <input
+                id="firstName"
+                type="text"
+                name="firstName"
+                required
+                placeholder="John"
+                pattern="^[^\\\/&]*$"
+              />
+              <label for="firstName">Prénom</label>
             </div>
-            <div class="form-row">
-                <div class="form-field">
-                    <input id="email" type="email" name="email" required placeholder="john.doe@gmail.com">
-                    <label for="email">Email</label>
-                </div>
+            <div class="form-field">
+              <input
+                id="lastName"
+                type="text"
+                name="lastName"
+                required
+                placeholder="Doe"
+                pattern="^[^\\\/&]*$"
+              />
+              <label for="lastName">Nom</label>
             </div>
-            <div class="form-row duo">
-                <div class="form-field">
-                    <input id="address" type="text" name="address" required placeholder="90210 Melrose Avenue"
-                           pattern="^[^\\\/&]*$">
-                    <label for="address">Adresse</label>
-                </div>
-                <div class="form-field">
-                    <input id="city" type="text" name="city" required placeholder="Los Angeles" pattern="^[^\\\/&]*$">
-                    <label for="city">Ville</label>
-                </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <input
+                id="email"
+                type="email"
+                name="email"
+                required
+                placeholder="john.doe@gmail.com"
+              />
+              <label for="email">Email</label>
             </div>
-            <button class="button" type="submit" form="checkout">Je commande</button>
-            <input type="hidden" name="totalPrice">
-            <input type="hidden" name="idOrder">
+          </div>
+          <div class="form-row duo">
+            <div class="form-field">
+              <input
+                id="address"
+                type="text"
+                name="address"
+                required
+                placeholder="90210 Melrose Avenue"
+                pattern="^[^\\\/&]*$"
+              />
+              <label for="address">Adresse</label>
+            </div>
+            <div class="form-field">
+              <input
+                id="city"
+                type="text"
+                name="city"
+                required
+                placeholder="Los Angeles"
+                pattern="^[^\\\/&]*$"
+              />
+              <label for="city">Ville</label>
+            </div>
+          </div>
+          <button class="button" type="submit" form="checkout">
+            Je commande
+          </button>
+          <input type="hidden" name="totalPrice" />
+          <input type="hidden" name="idOrder" />
         </form>
+      </section>
+
+      <footer>
+        <div class="container">
+          ©
+          <span id="date-footer"></span>
+          - Made with ❤️ by Thomas Claireau
+        </div>
+      </footer>
     </section>
 
-    <footer>
-        <div class="container">
-            ©
-            <span id="date-footer"></span>
-            - Made with ❤️ by Thomas Claireau
-        </div>
-    </footer>
-</section>
-
-<script src="../src/script.js" type="module" defer></script>
-</body>
+    <script src="../src/script.js" type="module" defer></script>
+  </body>
 </html>
